@@ -1,0 +1,15 @@
+.form-signin
+{
+    width:300px;
+    margin: 0 auto;
+    border: 2px solid;
+    text-align:center;
+}
+
+body {
+    background-image: url('../images/login.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #888;
+}
+

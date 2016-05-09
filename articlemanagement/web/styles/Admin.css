@@ -1,0 +1,70 @@
+#header, #footer {
+    background-color: #f1f1f1;
+}
+    
+#main-wrap {
+    background-color: #D9D9D9;
+}
+    
+#sidebar {
+    background-color: #d2d2d2;
+}
+    
+#content-wrap {
+    background-color: #c5c5c5;
+}
+    
+.info {
+    background-color: #DDD;
+}
+ 
+#main-wrap > div {
+    min-height: 450px;
+} 
+    
+#header {
+    min-height: 40px;
+}
+
+#footer {
+    min-height: 40px;
+    text-align: center;
+}
+    
+.info {
+    min-height: 80px;
+    text-align:center;
+}
+    
+#main-wrap {
+    overflow: hidden;
+}
+    
+#sidebar {
+    float: left;
+    width: 30%;
+}
+    
+#content-wrap {
+   float: right;
+   width: 70%;
+}
+    
+#info-wrap {
+    overflow: hidden;
+}
+    
+.info {
+    width: 100%;
+    float: left;
+}
+    
+th {
+    padding: 5px;
+    text-align:center;
+}
+
+td {
+    padding: 5px;
+    text-align:center;
+}

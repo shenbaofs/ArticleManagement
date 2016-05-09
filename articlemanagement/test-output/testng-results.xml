@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1486539" started-at="2016-04-18T10:02:12Z" finished-at="2016-04-18T10:26:58Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1486539" started-at="2016-04-18T10:02:12Z" finished-at="2016-04-18T10:26:58Z">
+      <class name="com.objectfrontier.training.test.UserLoginTest">
+        <test-method status="PASS" signature="LoginTest(java.lang.String)[pri:0, instance:com.objectfrontier.training.test.UserLoginTest@417213]" name="LoginTest" duration-ms="1486508" started-at="2016-04-18T15:32:12Z" data-provider="hclogin" finished-at="2016-04-18T15:56:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{"username":"raj","password":"raj17"}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+      </class> <!-- com.objectfrontier.training.test.UserLoginTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

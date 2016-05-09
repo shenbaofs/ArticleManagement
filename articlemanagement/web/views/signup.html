@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <link rel="stylesheet" href="/articlemanagement/styles/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="/articlemanagement/scripts/script.js"></script>    
+</head>
+<body>  
+        <form id="signUpForm" class="form-signup" > 
+        <h1 class="text-center login-title">Welcome to SignUp Page </h1>
+        <div>
+            <table>
+               <tbody style="text-align:center">
+                <tr>
+                    <td>UserName*</td><td><input type="text" id="username" class="username form-control"
+                        placeholder="shenba" 
+                        pattern="^(?=.*\d)(?=.*[a-zA-Z]).{1,15}$" 
+                        title="Username should contain atleast one numeral. e.g. john6" autofocus required /></td>
+                </tr>
+                <tr>
+                    <td>Password*</td><td><input type="password" id="password" class ="password form-control" 
+                        pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" 
+                        title="Minimum 8 characters, one number, one uppercase, one lowercase letter and 
+                               one special character" required /></td>
+                </tr>
+                <tr>
+                    <td>EmailId*</td><td> <input type="email"  class="emailId form-control" id="emailId" 
+                        placeholder="e.g. shenba@ofs.com" 
+                        title="Please enter a valid email" required /></td>
+                </tr>
+                <tr>
+                    <td>Date Of birth*</td><td><input type="date" id="dateOfBirth" class="dob form-control"
+                        placeholder="12/31/1994" 
+                        max="1998-12-31" min="1916-01-01" required></td>
+                </tr>
+                <tr>
+                    <td>PhoneNo*</td><td><input type="tel"  class="phoneno form-control" id="phoneNo" 
+                        pattern="\d{10}" placeholder="9999999999" 
+                        title="Please enter a ten digit phone number" required /></td>
+                </tr>
+                <tr>
+                    <td>Gender*</td><td><input type="radio" class="gender form-control" id="male" value="male" checked> Male
+                                        <input type="radio" name="gender form-control" id="female" value="female"> Female<br></td>
+                </tr>
+                </tbody>
+                </table>
+               
+                <button class="submits" type="submit" onclick="signup()">Signup</button>
+                <button class="submits" type="button"  onclick="cancel()" >Cancel</button></td>
+         </div>
+         </form>
+ </body>
+</html>   

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+	<servlet>
+		<servlet-name>User</servlet-name>
+		<servlet-class>com.objectfrontier.training.article.servlet.UserServlet
+		</servlet-class>
+	</servlet>
+	
+	<servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.objectfrontier.training.article.servlet.LoginServlet
+        </servlet-class>
+    </servlet>
+    
+	<servlet-mapping>
+		<servlet-name>User</servlet-name>
+		<url-pattern>/User</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    
+	<resource-ref> 
+         <description>My DataSource Reference</description> 
+         <res-ref-name>jdbc/DSshenbagalakshmia</res-ref-name> 
+        <res-type>javax.sql.DataSource</res-type> 
+        <res-auth>Container</res-auth> 
+    </resource-ref> 
+</web-app>

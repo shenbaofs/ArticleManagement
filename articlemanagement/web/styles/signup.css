@@ -1,0 +1,21 @@
+.form-signup {
+    
+    width: 550px;
+    margin: 0 auto;
+    border: 3px solid;
+    text-align:center;
+    margin-bottom: 10px;
+    height: 320px;
+    
+}
+
+.form-control {
+   margin: 5px;
+}
+
+body {
+    background-image: url('../images/signup.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #888;
+}

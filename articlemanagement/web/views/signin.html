@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+     <link rel="stylesheet" href="/articlemanagement/styles/login.css">
+     <script src="/articlemanagement/scripts/signin.js"></script>  
+   
+</head>
+<body>
+    <form id="signinForm" class="form-signin">
+        <h1 class="text-center login-title">Welcome to Login Page </h1>
+        <div>
+            <table>
+                <tr>
+                    <td>UserName*</td><td> <input type="text" class="form-control" id="username" 
+                                                  placeholder="shenba" required autofocus></td>
+                </tr>
+                <tr>
+                    <td>Password*</td><td><input type="password" class="form-control" id="password" 
+                                                 placeholder="Password" required></td>
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="login()">Login</button></td>
+                     <td><button onclick="location.href='signup.html'" class="text-center new-account" type="submit">Sign Up </td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="pull-right Forgot Password">Forget Password? </a></td>
+                </tr>
+        </div>
+    </form>   
+</body>
+</html>

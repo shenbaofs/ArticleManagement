@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <link rel="stylesheet" href="/articlemanagement/styles/profile.css">
+    <script src="/articlemanagement/scripts/profile.js"></script>  
+</head>
+<body onload="profileDetails()">
+    <form id="ProfileForm" class="form-profile">
+    <div>
+            <div id="header">
+                <span> <h1><div id = "name" ></div> - Profile</h1> </span>
+            </div>
+            <table>
+               <tbody style="text-align:center">
+                <tr>
+                    <td>UserName:</td><td><input type="text" id="username" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td><td><input type="password" id="password" readonly /></td>
+                 </tr>
+                 <tr>
+                    <td>New Password:</td><td><input required type="password" placeholder="Password" id="newpassword" 
+                            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" 
+                            title="Minimum 8 characters, one number, one uppercase, one lowercase letter and 
+                            one special character" readonly/></td>
+                 </tr>   
+                  <tr>
+                    <td>Confirm Password:</td><td> <input required type="password" placeholder="Confirm Password" 
+                        id="confirmpassword" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" 
+                        title="Minimum 8 characters, one number, one uppercase, one lowercase letter and 
+                        one special character" readonly/>
+                </tr>
+                <tr>
+                    <td>EmailId:</td><td> <input type="text" id="emailId" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Date Of birth:</td><td><input type="text" id="dateOfBirth" readonly /></td>
+                </tr>
+                <tr>
+                    <td>PhoneNo:</td><td><input required type="text" required id="phoneNo" pattern="\d{10}" 
+                                title="Please enter a ten digit phone number"readonly /></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td><td><input type="text" id="gender" readonly /></td>
+                </tr>
+                </tbody>
+                </table>
+                <button class="submits" type="button" id="editbutton" onclick="edit()">Edit</button>
+                <button class=" submits" type="button" id="savebutton" onclick="save()">Save</button> 
+                <button class="submits" type="button" onclick="cancel()">Cancel</button></td>
+         </div>
+</body>
+     

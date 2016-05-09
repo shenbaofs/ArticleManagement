@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="articlemanagements.webinf.classes" path="src"/>
+	<classpathentry kind="src" output="articlemangement.webinf.classes" path="test"/>
+	<classpathentry kind="src" output="articlemanagement" path="web"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-security-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-annotations-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-jmx-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-jndi-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-plus-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-server-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-servlet-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-xml-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-client-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-http-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-io-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-util-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/jetty-webapp-9.3.6.v20151106.jar"/>
+	<classpathentry kind="lib" path="D:/Tools/jetty-distribution-9.3.6.v20151106/lib/servlet-api-3.1.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/HikariCP-2.4.3.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/jackson-annotations-2.7.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/jackson-core-2.7.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/jackson-databind-2.7.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/mysql-connector-java-5.1.38-bin.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/slf4j-api-1.7.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
