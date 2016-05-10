@@ -17,6 +17,7 @@ extends HttpServlet	{
 	
 	private static final long serialVersionUID = 1L; 
 	
+	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) {
 		
 		try {
@@ -31,36 +32,23 @@ extends HttpServlet	{
 		    pw.close();
 		    res.setStatus(200);	  
 		} catch (Exception e) {	
-				res.setStatus(500);
-				throw new AppException(e);
-		}
-	}
-	
-	public void doGet(HttpServletRequest req,HttpServletResponse res) { 
-		
-		try {
-			res.setContentType("application/json");
-			String idString = req.getParameter("id");
-			long id  = Long.parseLong(idString);
-			/*
-			 * 
-			 * if(id==0){
-			 * list = dao.getAll()
-			 * } else if(id == 1){
-			 * list = dao.getWTA()	
-			 * }
-			 * return list;
-			 * 
-			 * */
-			UserService userservice = new UserServiceImpl();			
-		    User user = userservice.getUserById(id);
-		    String userString = JsonUtil.toJSON(user);
-		    PrintWriter pw = res.getWriter(); 
-		    res.getWriter().write(userString);
-		    pw.close();
-		}  catch (Exception e) {	
 			res.setStatus(500);
 			throw new AppException(e);
 		}
 	}
+       
+//	@Override
+//	public void doPut(HttpServletRequest req, HttpServletResponse res) {
+//
+//		try {
+//			res.setContentType("application/json");
+//			String userId = req.getParameter("id");
+//			long id  = Long.parseLong(userId);
+//			String status = req.getParameter("status");
+//			UserService userservice = new UserServiceImpl();
+//			userservice.updateUserStatus(id,status);
+//			} catch (Exception e) {
+//	        	throw new AppException(e);
+//		   }
+//		}
 }

@@ -5,8 +5,19 @@
     <script src="/articlemanagement/scripts/userlist.js"></script>  
 </head>
 <body>
-    <div class="wrapper">
+    <div id="selectedstatus" class="wrapper">
+        <span>
+        <select id="mySelect">
+            <option value="ALL">ALL</option>
+            <option value="APPROVED">APPROVED</option>
+            <option value="DISAPPROVED">DISAPPROVED</option>
+            <option value="WFA">WFA</option>
+        </select>
+        </span>
+        <span>
         <button id="button" onclick="getlistofusers()">Display users!</button>
+        <button id="button" onclick="cancel()">CANCEL</button>
+        </span>
     </div>
 </body>
 </html>

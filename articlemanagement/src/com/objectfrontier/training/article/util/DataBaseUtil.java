@@ -24,4 +24,3 @@ public class DataBaseUtil {
         return dbConnect.connection;
     }
 }
- 

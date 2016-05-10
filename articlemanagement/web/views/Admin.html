@@ -3,24 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="/articlemanagement/styles/Admin.css">
-    <script>
-        function getCookie(cname) {
-                console.log("hello");
-                var name = cname + "=";
-                var ca = document.cookie.split(';');
-                for(var i=0; i<ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0)==' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(name) === 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-        }
-        var userName = getCookie("username");
-    </script>
+    
 </head>
 
 <body>
@@ -40,14 +23,33 @@
             </div>
             <div id="content-wrap">
                 <div id="info-wrap">
-                    <div class="info">
-                        <h3>WFA LIST OF USERS<h3>
-                    </div>
-                    
-            </div>
-        </div>
+                   <textarea rows="4" cols="50">
+                        
+                    </textarea>
+                </div>
+           </div>
             <div id="footer">
                  <button onclick="location.href='signin.html'" class=" submits" type="submit" onclick="signup()">Logout</button>
             </div>
-    </div>
+        </div>
+    
+    <script>
+        function getCookie(cname) {
+                console.log("hello");
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) === 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+        }
+        var userName = getCookie("username");
+        document.getElementByID('username') = username;
+    </script>
 </body>

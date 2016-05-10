@@ -21,14 +21,14 @@
 			<locationURI>JETTY_SERVER/webapps/articlemanagement</locationURI>
 		</link>
 		<link>
-			<name>articlemanagements.webinf.classes</name>
+			<name>articlemanagement.web-inf.classes</name>
 			<type>2</type>
 			<locationURI>JETTY_SERVER/webapps/articlemanagement/WEB-INF/classes</locationURI>
 		</link>
 		<link>
-			<name>articlemangement.webinf.classes</name>
+			<name>articlemanagement.webinf.classes</name>
 			<type>2</type>
-			<locationURI>JETTY_SERVER/webapps/articlemanagement/WEB-INF/CLASSES</locationURI>
+			<locationURI>JETTY_SERVER/webapps/articlemanagement/WEB-INF/classes</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

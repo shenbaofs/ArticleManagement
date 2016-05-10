@@ -59,8 +59,8 @@ public class UserServiceImpl implements UserService {
 		validation.validateUserDetailsForLogin(username, password);
 		try {
 			User user =	userDao.userLogin(username, password);
-			if (user.getRole() == "admin") {
-				throw new AppException(AppErrorCode.UNAUTHORIZED_OPERATION);
+			if(!(user.getStatus().equalsIgnoreCase("APPROVED"))) {
+				throw new AppException(AppErrorCode.WAITING_FOR_APPROVAL_CONTACT_ADMIN);
 			} else {
 				if(user.getUsername() == null) {
 					throw new AppException(AppErrorCode.INVALID_LOGIN_CREDENTIALS);
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 			return user;
 			}
 	    } catch (Exception e) {
-			throw new AppException(e);
+ 			throw new AppException(e);
 		}
 		
 	}	
@@ -107,18 +107,32 @@ public class UserServiceImpl implements UserService {
 		
 		try {
 			ArrayList<User> userList = new ArrayList<User>();
-			if(status == "ALL") {
+			if(status.equalsIgnoreCase("ALL")) {
 				userList = userDao.getListOfAllUsers(status);
-			} else if (status == "APPROVED") {
+			} else if (status.equalsIgnoreCase("APPROVED")) {
 				userList = userDao.getListOfApprovedUsers(status);
-			} else if (status == "DISAPPROVED") {
+			} else if (status.equalsIgnoreCase("DISAPPROVED")) {
 				userList = userDao.getListOfDisapprovedUsers(status);
-			} else if (status == "WFA") {
+			} else if (status.equalsIgnoreCase("WFA")) {
 				userList = userDao.getListOfWFAUsers(status);
 			} 
 			return userList;
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
+	}
+	
+	@Override
+	public boolean updateUserStatus(long id, String status) {
+		
+		try {
+				int rowsAffected = userDao.updateUserStatus(id, status);
+				if(!(rowsAffected == 1)) {
+					throw new AppException(AppErrorCode.USER_STATUS_NOT_UPDATED);
+				}
+		} catch(Exception e) {
+			throw new AppException(e);
+		}
+		return true;
 	}
 }

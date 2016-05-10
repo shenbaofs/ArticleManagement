@@ -18,7 +18,7 @@ function profileDetails() {
     
     var xhttp = new XMLHttpRequest();
     var id = getCookie("id");
-    var url = "http://localhost:8080/articlemanagement/Login?id="+id;
+    var url = "http://localhost:8080/articlemanagement/User?id="+id;
     xhttp.onload = function() {
         if(xhttp.readyState == 4 && xhttp.status  === 200) {
             var user = JSON.parse(xhttp.responseText);
@@ -45,7 +45,9 @@ function edit() {
     document.getElementById("editbutton").disabled = true; 
 }
 
- function save() {
+
+function save() {
+    
         var xhttp = new XMLHttpRequest();
         var userid = getCookie("id");
         var url = "http://localhost:8080/articlemanagement/User?id="+userid;

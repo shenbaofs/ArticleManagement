@@ -12,7 +12,9 @@ public enum AppErrorCode {
 	USER_NOT_FOUND(108, "user is deleted or user is not found"), 
 	UNAUTHORIZED_OPERATION(109, "unathorized opeation"), 
 	PASSWORD_ALREADY_EXISTS(110, "password already exists"), 
-	USER_DETAILS_NOT_UPDATED(111, "user details not updated");
+	USER_DETAILS_NOT_UPDATED(111, "user details not updated"),
+	WAITING_FOR_APPROVAL_CONTACT_ADMIN(112, "waiting for approval contact admin"), 
+	USER_STATUS_NOT_UPDATED(113, "status not updated");
 	
 	private final int code;
     private final String message;	

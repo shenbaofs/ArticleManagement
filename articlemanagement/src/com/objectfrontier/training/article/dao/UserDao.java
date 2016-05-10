@@ -34,6 +34,9 @@ public interface UserDao {
 	ArrayList<User> getListOfDisapprovedUsers(String status) throws Exception;
 	
 	/* To get list of WFA users available in database */
-	ArrayList<User> getListOfWFAUsers(String status) throws Exception;
+	ArrayList<User> getListOfWFAUsers(String status) throws Exception ;
+	
+	/* To update user status as approved*/
+	int updateUserStatus(long id, String status) throws Exception;
 	
 }

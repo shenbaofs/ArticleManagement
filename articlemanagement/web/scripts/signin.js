@@ -9,6 +9,7 @@ function login() {
             var user = JSON.parse(xhttp.responseText);             
             document.cookie = "id=" + user.id;
             document.cookie = "username=" + user.username;
+            document.cookie = "status=" + user.status;
             if(user.role == "admin") {
                 window.open("Admin.html", "_self");
             } else {

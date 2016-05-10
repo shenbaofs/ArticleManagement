@@ -19,6 +19,7 @@ import static com.objectfrontier.training.article.util.DBQueries.LIST_OF_USERS_Q
 import static com.objectfrontier.training.article.util.DBQueries.LIST_OF_APPROVED_USERS_QUERY;
 import static com.objectfrontier.training.article.util.DBQueries.LIST_OF_DISAPPROVED_USERS_QUERY ;
 import static com.objectfrontier.training.article.util.DBQueries.LIST_OF_WFA_USERS_QUERY;
+import static com.objectfrontier.training.article.util.DBQueries.UPDATE_STATUS_QUERY; 
 
 public class UserDaoImpl implements UserDao {
 
@@ -79,6 +80,7 @@ public class UserDaoImpl implements UserDao {
 			user.setUsername(rs.getString("username"));
 			user.setId(rs.getLong("id"));
 			user.setRole(rs.getString("role"));
+			user.setStatus(rs.getString("status"));
 		}
 		return user;
     }
@@ -120,68 +122,91 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public ArrayList<User> getListOfAllUsers(String status) throws Exception {
 		
-		ArrayList<User> list = new ArrayList<>();
+		ArrayList<User> userList = new ArrayList<>();
         Connection connection = DataBaseUtil.getDbConnect();
         PreparedStatement ps = connection.prepareStatement(LIST_OF_USERS_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);;
         ResultSet rs = ps.executeQuery(); 
         while (rs.next()) {
         	User user = new User();
+        	user.setId(rs.getLong("id"));
+        	user.setUsername(rs.getString("username"));
         	user.setEmailId(rs.getString("email_id"));
         	user.setPhoneNo(rs.getLong("phone_no"));
+        	user.setDateOfBirth(rs.getDate("date_of_birth"));
         	user.setStatus(rs.getString("status"));
-    		list.add(user); 
+        	userList.add(user); 
         	}	
-        return list;
+        return userList;
     } 
 	
 	@Override
 	public ArrayList<User> getListOfApprovedUsers(String status) throws Exception {
 		
-		ArrayList<User> list = new ArrayList<>();
+		ArrayList<User> userList = new ArrayList<>();
         Connection connection = DataBaseUtil.getDbConnect();
         PreparedStatement ps = connection.prepareStatement(LIST_OF_APPROVED_USERS_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);;
         ResultSet rs = ps.executeQuery(); 
         while (rs.next()) {
         	User user = new User();
+        	user.setId(rs.getLong("id"));
+        	user.setUsername(rs.getString("username"));
             user.setEmailId(rs.getString("email_id"));
             user.setPhoneNo(rs.getLong("phone_no"));
+            user.setDateOfBirth(rs.getDate("date_of_birth"));
             user.setStatus(rs.getString("status"));
-        	list.add(user);
+            userList.add(user);
             }
-        return list;
+        return userList;
        } 
 	
 	@Override
 	public ArrayList<User> getListOfDisapprovedUsers(String status) throws Exception {
 		
-		ArrayList<User> list = new ArrayList<>();
+		ArrayList<User> userList = new ArrayList<>();
         Connection connection = DataBaseUtil.getDbConnect();
     	PreparedStatement ps = connection.prepareStatement(LIST_OF_DISAPPROVED_USERS_QUERY , java.sql.Statement.RETURN_GENERATED_KEYS);;
         ResultSet rs = ps.executeQuery(); 
         while (rs.next()) {
         	User user = new User();
+        	user.setId(rs.getLong("id"));
+        	user.setUsername(rs.getString("username"));
         	user.setEmailId(rs.getString("email_id"));
         	user.setPhoneNo(rs.getLong("phone_no"));
+        	user.setDateOfBirth(rs.getDate("date_of_birth"));
         	user.setStatus(rs.getString("status"));
-        	list.add(user);
+        	userList.add(user);
             }
-        return list;
+        return userList;
        } 
 	
 	@Override
 	public ArrayList<User> getListOfWFAUsers(String status) throws Exception {
 		
-		ArrayList<User> list = new ArrayList<>();
+		ArrayList<User> userList = new ArrayList<>();
         Connection connection = DataBaseUtil.getDbConnect();
         PreparedStatement ps = connection.prepareStatement(LIST_OF_WFA_USERS_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);;
         ResultSet rs = ps.executeQuery(); 
         while (rs.next()) {
           	User user = new User();
+          	user.setId(rs.getLong("id"));
+          	user.setUsername(rs.getString("username"));
     		user.setEmailId(rs.getString("email_id"));
     		user.setPhoneNo(rs.getLong("phone_no"));
+    		user.setDateOfBirth(rs.getDate("date_of_birth"));
     		user.setStatus(rs.getString("status"));
-        	list.add(user);
+    		userList.add(user);
             }
-        return list;
+        return userList;
     }
+	
+	@Override
+	public int updateUserStatus(long id, String status) throws Exception {
+		
+		Connection connection = DataBaseUtil.getDbConnect();
+		PreparedStatement ps = connection.prepareStatement(UPDATE_STATUS_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, status);
+		ps.setLong(2, id);
+		int rowsAffected = ps.executeUpdate();
+		return rowsAffected;
+	}
 }
