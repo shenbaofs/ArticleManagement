@@ -23,7 +23,5 @@ public interface UserService {
 	
 	/* To get list of users available in database */
 	ArrayList<User> getListOfUsers(String status);
-	
-	/* To update user status */
-	boolean updateUserStatus(long id, String status);
+
 }

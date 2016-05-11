@@ -19,6 +19,6 @@ function login() {
             alert("INVALID USER");
         }
     };
-     xhttp.open('Post', url + datas, true);
+     xhttp.open('Get', url + datas, true);
      xhttp.send(JSON.stringify(datas));
 }

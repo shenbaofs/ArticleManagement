@@ -1,40 +1,50 @@
+var userList = [];
 function getlistofusers()  {
         var status = document.getElementById("mySelect").value;
         getUsersService(status);
 }
 
 function approve(arr) {
-    var id = arr;
+    var user = {};
+    for(var userVal in userList) {
+      if(userList[userVal].id == arr){
+        user = userList[userVal];
+      }
+    }
+    user.status = "APPROVED";
     var xhttp = new XMLHttpRequest();
     var url = "http://localhost:8080/articlemanagement/User?";
-    var status = document.getElementById("status").value;
-    var datas = "id=" + id + "&" + "status=" + status;
     xhttp.onload = function() {
         if(xhttp.readyState == 4 && xhttp.status  === 200) {
             alert("USER APPROVED SUCCESSFULLY");
         }
     };
-     xhttp.open('Put', url + datas, true);
-     xhttp.send(JSON.stringify(datas));
+     xhttp.open('Put', url, true);
+     xhttp.send(JSON.stringify(user));
 }
 
 function disapprove(arr) {
-    var id = arr;
+    var user = {};
+    for(var userVal in userList) {
+      if(userVal.id == arr){
+        user = userVal;
+      }
+    }
+    user.status = "DISAPPROVED";
     var xhttp = new XMLHttpRequest();
     var url = "http://localhost:8080/articlemanagement/User?";
-    var status = document.getElementById("status").value;
-    var datas = "id=" + id + "&" + "status=" + status;
     xhttp.onload = function() {
         if(xhttp.readyState == 4 && xhttp.status  === 200) {
-            alert("USER DISAPPROVED  SUCCESSFULLY");
+            alert("USER APPROVED SUCCESSFULLY");
         }
     };
-     xhttp.open('Put', url + datas, true);
-     xhttp.send(JSON.stringify(datas));
+     xhttp.open('Put', url, true);
+     xhttp.send(JSON.stringify(user));
 }
 
 function myFunction(response) {
         var arr = JSON.parse(response);
+        userList = arr;
         var i;
         var out = "<table><tr><th>Username</th><th>EmailId</th><th>PhoneNo</th><th>DateOfBirth</th><th>Status</th><th>Action</th>";
         for(i = 0; i < arr.length; i++) {
@@ -93,6 +103,6 @@ function getUsersService(status) {
 
 function cancel() {
    
-    alert("Do you want to cancel???????...");
+    alert("Do you want to cancel?");
     location.href='userlist.html';
 }

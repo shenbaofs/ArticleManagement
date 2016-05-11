@@ -3,13 +3,14 @@ package com.objectfrontier.training.article.util;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.objectfrontier.training.article.model.AppErrorCode;
 import com.objectfrontier.training.article.model.AppException;
 import com.objectfrontier.training.article.model.User;
 
 public class ArticleManagementValidation {
-	
 	
 	AppErrorCode errorcode = null;
 	
@@ -30,6 +31,15 @@ public class ArticleManagementValidation {
 		phoneNoValidation(user.getPhoneNo());
 		dateOfBirthValidation(user.getDateOfBirth());
 	}	
+	
+	final boolean passwordValidation(String password) {
+		
+		Pattern pattern = null;
+		Matcher matcher;
+		String PASSWORD_PATTERN =  "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+		matcher = pattern.matcher(password);
+		return matcher.matches();
+	}
 	
 	final void phoneNoValidation(long PhoneNo) {
 	    

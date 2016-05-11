@@ -9,7 +9,7 @@ public enum AppErrorCode {
 	INVALID_DATE_OF_BIRTH(105, "user should be within 18 to 100 years"), 
 	USER_NAME_ALREADY_EXISTS(106, "user already exists"),
 	INVALID_LOGIN_CREDENTIALS(107, "invalid username and password"),
-	USER_NOT_FOUND(108, "user is deleted or user is not found"), 
+	USER_NOT_FOUND(108, "user details not found"), 
 	UNAUTHORIZED_OPERATION(109, "unathorized opeation"), 
 	PASSWORD_ALREADY_EXISTS(110, "password already exists"), 
 	USER_DETAILS_NOT_UPDATED(111, "user details not updated"),

@@ -34,36 +34,12 @@ public class DBQueries {
 	
 	public static String UPDATE_USER_QUERY = new StringBuilder().
 		    append("UPDATE userdetails   			  ").
-		    append("SET    password = ?, phone_no = ? ").
+		    append("SET    username = ?, password = ?, email_id = ?, phone_no = ?, date_of_birth = ?, status = ? ").
 		    append("WHERE  id = ?      				  ").
 		toString();
 	
 	public static String LIST_OF_USERS_QUERY = new StringBuilder().
-	            append("SELECT id, username, email_id, phone_no, date_of_birth, status  ").
+	            append("SELECT id, username, password, email_id, phone_no, date_of_birth, status  ").
 	            append("FROM   userdetails ").
 	        toString();
-	
-	public static String LIST_OF_APPROVED_USERS_QUERY = new StringBuilder().
-            append("SELECT id, username, email_id, phone_no, date_of_birth, status  ").
-            append("FROM   userdetails ").
-            append(" WHERE  status = 'APPROVED' ").
-        toString();
-	
-	public static String LIST_OF_DISAPPROVED_USERS_QUERY = new StringBuilder().
-            append("SELECT id, username, email_id, phone_no, date_of_birth, status  ").
-            append("FROM   userdetails ").
-            append(" WHERE  status = 'DISAPPROVED' ").
-        toString();
-	
-	public static String LIST_OF_WFA_USERS_QUERY = new StringBuilder().
-            append("SELECT id, username, email_id, phone_no, date_of_birth, status  ").
-            append("FROM   userdetails ").
-            append(" WHERE  status = 'WFA' ").
-        toString();
-	
-	public static String UPDATE_STATUS_QUERY = new StringBuilder().
-		    append("UPDATE userdetails  ").
-		    append("SET    status = ?  ").
-		    append("WHERE  id = ?       ").
-		toString();
 }

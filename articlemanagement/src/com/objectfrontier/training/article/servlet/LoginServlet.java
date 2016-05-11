@@ -18,7 +18,7 @@ extends HttpServlet	{
 	private static final long serialVersionUID = 1L; 
 	
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse res) {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 		
 		try {
 			res.setContentType("application/json");
@@ -36,19 +36,4 @@ extends HttpServlet	{
 			throw new AppException(e);
 		}
 	}
-       
-//	@Override
-//	public void doPut(HttpServletRequest req, HttpServletResponse res) {
-//
-//		try {
-//			res.setContentType("application/json");
-//			String userId = req.getParameter("id");
-//			long id  = Long.parseLong(userId);
-//			String status = req.getParameter("status");
-//			UserService userservice = new UserServiceImpl();
-//			userservice.updateUserStatus(id,status);
-//			} catch (Exception e) {
-//	        	throw new AppException(e);
-//		   }
-//		}
 }

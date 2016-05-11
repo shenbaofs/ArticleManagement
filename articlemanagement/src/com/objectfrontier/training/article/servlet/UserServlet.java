@@ -14,10 +14,10 @@ import com.objectfrontier.training.article.model.User;
 import com.objectfrontier.training.article.service.UserService;
 import com.objectfrontier.training.article.service.impl.UserServiceImpl;
 
-public class UserServlet
-extends HttpServlet {
+public class UserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L; 
+	UserService userservice = new UserServiceImpl();
     
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) {
@@ -30,7 +30,6 @@ extends HttpServlet {
 		    while ((line = reader.readLine()) != null)
 		    	requestJSON.append(line);
 			User user = JsonUtil.fromJSON(requestJSON.toString(), User.class);
-	        UserService userservice = new UserServiceImpl();
 	        userservice.addUser(user);
 		} catch (Exception e) {
 			throw new AppException(e);
@@ -40,26 +39,15 @@ extends HttpServlet {
 	@Override
 	 public void doPut(HttpServletRequest req, HttpServletResponse res) {
 			
-			String idString = req.getParameter("id");
 			try {
-				if(!(idString == null)) {
-					res.setContentType("application/json");
-					String userId = req.getParameter("id");
-					long id  = Long.parseLong(userId);
-					String status = req.getParameter("status");
-					UserService userservice = new UserServiceImpl();
-					userservice.updateUserStatus(id,status);
-				} else {
-					res.setContentType("application/json");
-					StringBuffer requestJSON = new StringBuffer();
-					String line = null;
-					BufferedReader reader = req.getReader();
-					while ((line = reader.readLine()) != null)
-			    	requestJSON.append(line);
-					User user = JsonUtil.fromJSON(requestJSON.toString(), User.class);
-					UserService userservice = new UserServiceImpl();
-					userservice.updateUserDetails(user);
-				}
+				res.setContentType("application/json");
+				StringBuffer requestJSON = new StringBuffer();
+				String line = null;
+				BufferedReader reader = req.getReader();
+				while ((line = reader.readLine()) != null)
+			    requestJSON.append(line);
+				User user = JsonUtil.fromJSON(requestJSON.toString(), User.class);
+				userservice.updateUserDetails(user);
 	        } catch (Exception e) {
 	        	throw new AppException(e);
 	        }
@@ -74,8 +62,7 @@ extends HttpServlet {
 		try {
 			if(!(idString == null)) {
 				res.setContentType("application/json");
-				long id  = Long.parseLong(idString);
-				UserService userservice = new UserServiceImpl();			
+				long id  = Long.parseLong(idString);		
 			    User user = userservice.getUserById(id);
 			    String userString = JsonUtil.toJSON(user);
 			    PrintWriter pw = res.getWriter(); 
@@ -84,7 +71,6 @@ extends HttpServlet {
 			} else {
 				res.setContentType("application/json");
 				String status  = req.getParameter("status");
-				UserService userservice = new UserServiceImpl();
 				ArrayList<User> user = userservice.getListOfUsers(status);
 				String userString = JsonUtil.toJSON(user);
 				PrintWriter pw = res.getWriter(); 

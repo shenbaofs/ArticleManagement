@@ -18,6 +18,7 @@ function profileDetails() {
     
     var xhttp = new XMLHttpRequest();
     var id = getCookie("id");
+    var status = getCookie("status");
     var url = "http://localhost:8080/articlemanagement/User?id="+id;
     xhttp.onload = function() {
         if(xhttp.readyState == 4 && xhttp.status  === 200) {
@@ -37,7 +38,7 @@ function profileDetails() {
 }
 
 
-function edit() {
+function editUserProfile() {
    
     document.getElementById('newpassword').removeAttribute('readonly'); 
     document.getElementById('confirmpassword').removeAttribute('readonly'); 
@@ -46,16 +47,19 @@ function edit() {
 }
 
 
-function save() {
+function updateUserProfile() {
     
         var xhttp = new XMLHttpRequest();
         var userid = getCookie("id");
+        var userstatus = getCookie("status");
         var url = "http://localhost:8080/articlemanagement/User?id="+userid;
         var user = document.getElementById("username").value;
         var newpswrd = document.getElementById("newpassword").value;
         var confirmpswrd = document.getElementById("confirmpassword").value;
         if(newpswrd === confirmpswrd) {
              var pswrd = newpswrd ;
+        } else {
+            alert("new password and confirm password does not match");
         }
         var email = document.getElementById("emailId").value;
         var dob = document.getElementById("dateOfBirth").value;
@@ -66,7 +70,8 @@ function save() {
         password : pswrd,
         emailId : email,
         dateOfBirth : dob,
-        phoneNo : phno
+        phoneNo : phno,
+        status : userstatus
         };
         xhttp.onload = function() {
             if(xhttp.readyState == 4 && xhttp.status === 200) {
@@ -85,7 +90,7 @@ function save() {
 
 function cancel() {
    
-    alert("Do you want to cancel???????...");
+    alert("Do you want to cancel?");
     document.getElementById("savebutton").disabled = true;
     location.href='Admin.html';
 }

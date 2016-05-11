@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		
 		try {
 			int rowsAffected = userDao.deleteUser(id);
-			if(!(rowsAffected == 1)) {
+			if(rowsAffected != 1) {
 				throw new AppException(AppErrorCode.USER_NOT_FOUND);
 			}
 		} catch(Exception e) {
@@ -61,12 +61,8 @@ public class UserServiceImpl implements UserService {
 			User user =	userDao.userLogin(username, password);
 			if(!(user.getStatus().equalsIgnoreCase("APPROVED"))) {
 				throw new AppException(AppErrorCode.WAITING_FOR_APPROVAL_CONTACT_ADMIN);
-			} else {
-				if(user.getUsername() == null) {
-					throw new AppException(AppErrorCode.INVALID_LOGIN_CREDENTIALS);
-				} 
+			} 
 			return user;
-			}
 	    } catch (Exception e) {
  			throw new AppException(e);
 		}
@@ -76,16 +72,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserById(long id) {
 		
+		User user = new User();
 		try {
-			User user = userDao.getUserById(id);
+			user = userDao.getUserById(id);
 			if(user == null) {
 				throw new AppException(AppErrorCode.USER_NOT_FOUND);
-			} else {
-				return user;
-			}
+			} 
 	    } catch (Exception e) {
 			throw new AppException(e);
 	    }
+		return user;
 	}
 	
 	@Override
@@ -93,7 +89,7 @@ public class UserServiceImpl implements UserService {
 		
 		try {
 			int rowsAffected = userDao.updateUserDetails(user);
-			if(!(rowsAffected == 1)) {
+			if(rowsAffected != 1) {
 				throw new AppException(AppErrorCode.USER_DETAILS_NOT_UPDATED);
 			} 
 		} catch(Exception e) {
@@ -107,32 +103,19 @@ public class UserServiceImpl implements UserService {
 		
 		try {
 			ArrayList<User> userList = new ArrayList<User>();
-			if(status.equalsIgnoreCase("ALL")) {
-				userList = userDao.getListOfAllUsers(status);
-			} else if (status.equalsIgnoreCase("APPROVED")) {
-				userList = userDao.getListOfApprovedUsers(status);
-			} else if (status.equalsIgnoreCase("DISAPPROVED")) {
-				userList = userDao.getListOfDisapprovedUsers(status);
-			} else if (status.equalsIgnoreCase("WFA")) {
-				userList = userDao.getListOfWFAUsers(status);
+			userList = userDao.getListOfAllUsers();
+			if(!status.equalsIgnoreCase("ALL")) {
+				ArrayList<User> selectedUserList = new ArrayList<User>();
+				for(User user : userList){
+					if(user.getStatus().equalsIgnoreCase(status)){
+						selectedUserList.add(user);
+					}
+				}
+				return selectedUserList;
 			} 
 			return userList;
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
-	}
-	
-	@Override
-	public boolean updateUserStatus(long id, String status) {
-		
-		try {
-				int rowsAffected = userDao.updateUserStatus(id, status);
-				if(!(rowsAffected == 1)) {
-					throw new AppException(AppErrorCode.USER_STATUS_NOT_UPDATED);
-				}
-		} catch(Exception e) {
-			throw new AppException(e);
-		}
-		return true;
 	}
 }
