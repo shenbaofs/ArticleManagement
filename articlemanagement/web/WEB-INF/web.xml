@@ -17,6 +17,13 @@
         </servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>Article</servlet-name>
+        <servlet-class>com.objectfrontier.training.article.servlet.ArticleServlet
+        </servlet-class>
+    </servlet>
+    
+    
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
 		<url-pattern>/User</url-pattern>
@@ -26,7 +33,11 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
-
+    
+    <servlet-mapping>
+        <servlet-name>Article</servlet-name>
+        <url-pattern>/Article</url-pattern>
+    </servlet-mapping>
     
 	<resource-ref> 
          <description>My DataSource Reference</description> 

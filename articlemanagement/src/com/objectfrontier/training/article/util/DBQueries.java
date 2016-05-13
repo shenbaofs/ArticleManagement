@@ -42,4 +42,9 @@ public class DBQueries {
 	            append("SELECT id, username, password, email_id, phone_no, date_of_birth, status  ").
 	            append("FROM   userdetails ").
 	        toString();
+	
+	public static String LIST_OF_ARTICLES_QUERY = new StringBuilder().
+				append("SELECT id, Article_Name, Author, Category, Description, date_Of_Publish, status ").
+				append("FROM articles").
+			toString();
 }

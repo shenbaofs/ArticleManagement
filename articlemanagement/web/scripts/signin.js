@@ -12,7 +12,7 @@ function login() {
             document.cookie = "status=" + user.status;
             if(user.role == "admin") {
                 window.open("Admin.html", "_self");
-            } else {
+            } else if (user.role == "user" && user.status == "APPROVED"){
                 window.open("Welcome.html", "_self");
             }    
         } else {

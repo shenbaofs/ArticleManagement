@@ -86,7 +86,7 @@ function myFunction(response) {
                 "</td><td><button id='status' value='APPROVED' onclick='approve("+arr[i].id+")'>APPROVE</button>  <button id='status' value='DISAPPROVED' onclick='disapprove("+arr[i].id+")'>DISAPPROVE</button></td></tr>";}
         }
     out += "</table>";
-    document.getElementById("button").innerHTML = out;
+    document.getElementById("userTable").innerHTML = out;
 }
  
 function getUsersService(status) {
@@ -99,10 +99,4 @@ function getUsersService(status) {
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-}
-
-function cancel() {
-   
-    alert("Do you want to cancel?");
-    location.href='userlist.html';
 }
