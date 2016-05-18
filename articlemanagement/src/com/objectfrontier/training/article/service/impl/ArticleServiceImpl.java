@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.objectfrontier.training.article.dao.ArticleDao;
 import com.objectfrontier.training.article.dao.impl.ArticleDaoImpl;
+import com.objectfrontier.training.article.model.AppErrorCode;
 import com.objectfrontier.training.article.model.AppException;
 import com.objectfrontier.training.article.model.Article;
 import com.objectfrontier.training.article.service.ArticleService;
@@ -12,6 +13,7 @@ public class ArticleServiceImpl implements ArticleService {
 	
 	ArticleDao articleDao = new ArticleDaoImpl();
 	
+	@Override
 	public ArrayList<Article> getListOfArticles(String category) {
 		
 		try {
@@ -30,5 +32,20 @@ public class ArticleServiceImpl implements ArticleService {
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
+	}
+	
+	@Override
+	public Article getAuthorDetailsById(long authorId) {
+		
+		Article article = new Article();
+		try {
+			article = articleDao.getAuthorDetailsById(authorId);
+			if(article == null) {
+				throw new AppException(AppErrorCode.AUTHOR_NOT_FOUND);
+			} 
+	    } catch (Exception e) {
+			throw new AppException(e);
+	    }
+		return article;
 	}
 }

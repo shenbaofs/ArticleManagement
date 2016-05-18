@@ -8,5 +8,8 @@ public interface ArticleService {
 
     /* To get list of articles available in database */
     ArrayList<Article> getListOfArticles(String category);
+    
+    /* To get author details using authorId */
+    Article getAuthorDetailsById(long authorId);
 
 }

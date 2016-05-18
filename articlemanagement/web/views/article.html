@@ -4,7 +4,7 @@
      <link rel="stylesheet" href="/articlemanagement/styles/article.css">
      <script src="/articlemanagement/scripts/article.js"></script>  
 </head>
-<body>
+<body onload="getlistofarticles()">
     <div id="header">
         <h1>ARTICLES</h1>
     </div>
@@ -16,7 +16,7 @@
     <div id="section">
         <select id="mySelect" onchange="getlistofarticles()">
             <option value="ALL">ALL</option>
-            <option value="JAVA">JAVA</option>
+            <option value="AngularJs">AngularJs</option>
             <option value="BUSINESS">BUSINESS</option>
             <option value="SOCIALMEDIA">SOCIALMEDIA</option>
             <option value="WORKWORLD">WORKWORLD</option>

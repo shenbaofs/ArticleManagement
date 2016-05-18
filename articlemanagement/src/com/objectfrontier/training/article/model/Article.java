@@ -6,22 +6,29 @@ public class Article {
 	
 	private long id;
 	private String  articleName;
-	private String  author;
 	private String  category;
 	private String  description;
 	private Date    dateOfPublish;
 	private String  status;
+	private long    authorId;
+	private String  authorName;
+	private String  authorCarrerProfile;
+	private byte[]  authorImage;
 	
 	public Article() {}
 	
-	public Article(String articleName, String author, String category, String description, Date dateOfPublish, String status) {
+	public Article(String articleName, String category, String description, Date dateOfPublish, 
+				   String status, long authorId, String authorName, String authorCarrerProfile, byte[] authorImage) {
 	
 		this.articleName   = articleName;
-		this.author        = author;
 		this.category      = category;
 		this.description   = description;
 		this.dateOfPublish = dateOfPublish;
 		this.status        = status;
+		this.authorId      = authorId;
+		this.authorName    = authorName;
+		this.authorCarrerProfile = authorCarrerProfile;
+		this.authorImage   = authorImage;
 	}
 
 	public long getId() {
@@ -38,14 +45,6 @@ public class Article {
 
 	public void setArticleName(String articleName) {
 		this.articleName = articleName;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public String getCategory() {
@@ -80,6 +79,35 @@ public class Article {
 		this.status = status;
 	}
 
-	
-	
+	public long getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(long authorId) {
+		this.authorId = authorId;
+	}
+
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public String getAuthorCarrerProfile() {
+		return authorCarrerProfile;
+	}
+
+	public void setAuthorCarrerProfile(String authorCarrerProfile) {
+		this.authorCarrerProfile = authorCarrerProfile;
+	}
+
+	public byte[] getAuthorImage() {
+		return authorImage;
+	}
+
+	public void setAuthorImage(byte[] authorImage) {
+		this.authorImage = authorImage;
+	}
 }

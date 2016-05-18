@@ -14,7 +14,8 @@ public enum AppErrorCode {
 	PASSWORD_ALREADY_EXISTS(110, "password already exists"), 
 	USER_DETAILS_NOT_UPDATED(111, "user details not updated"),
 	WAITING_FOR_APPROVAL_CONTACT_ADMIN(112, "waiting for approval contact admin"), 
-	USER_STATUS_NOT_UPDATED(113, "status not updated");
+	USER_STATUS_NOT_UPDATED(113, "status not updated"), 
+	AUTHOR_NOT_FOUND(114,"author details not found");
 	
 	private final int code;
     private final String message;	

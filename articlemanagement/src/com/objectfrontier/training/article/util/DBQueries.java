@@ -44,7 +44,15 @@ public class DBQueries {
 	        toString();
 	
 	public static String LIST_OF_ARTICLES_QUERY = new StringBuilder().
-				append("SELECT id, Article_Name, Author, Category, Description, date_Of_Publish, status ").
-				append("FROM articles").
+				append("SELECT articles.id, articles.Article_Name, articles.Category,    ").
+				append("articles.Description, articles.date_Of_Publish, articles.status, ").
+                append("authordetails.Author_Id, authordetails.Author_Name ").
+                append("FROM  articles INNER JOIN authordetails ON articles.Author_Id=authordetails.Author_Id").
 			toString();
+	
+	public static String GET_AUTHOR_DETAILS_BY_AUTHOR_ID_QUERY = new StringBuilder().
+			append(" SELECT *	          ").
+		    append(" FROM   authordetails   ").
+  		    append(" WHERE  Author_Id = ?  ").
+		toString();
 }

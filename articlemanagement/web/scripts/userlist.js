@@ -1,4 +1,5 @@
 var userList = [];
+
 function getlistofusers()  {
         var status = document.getElementById("mySelect").value;
         getUsersService(status);
@@ -48,7 +49,7 @@ function myFunction(response) {
         var i;
         var out = "<table><tr><th>Username</th><th>EmailId</th><th>PhoneNo</th><th>DateOfBirth</th><th>Status</th><th>Action</th>";
         for(i = 0; i < arr.length; i++) {
-            if( arr[i].status == "APPROVED") {
+          if(arr[i].status == "APPROVED") {
                 out += "<tr><td>" +
                 arr[i].username +
                 "</td><td>" +
@@ -59,8 +60,8 @@ function myFunction(response) {
                 arr[i].dateOfBirth +
                 "</td><td>" +
                 arr[i].status +
-                "</td> <td><button id='status' value='DISAPPROVED' onclick='disapprove("+arr[i].id+")'>DISAPPROVE</button></td></tr>";
-            } else if(arr[i].status == "DISAPPROVED") {
+                "</td><td><button id='status' value='DISAPPROVED' onclick='disapprove("+arr[i].id+")'>DISAPPROVE</button></td></tr>";
+        } else if(arr[i].status == "DISAPPROVED") {
                 out += "<tr><td>" +
                 arr[i].username +
                 "</td><td>" +
@@ -83,8 +84,9 @@ function myFunction(response) {
                 arr[i].dateOfBirth +
                 "</td><td>" +
                 arr[i].status +
-                "</td><td><button id='status' value='APPROVED' onclick='approve("+arr[i].id+")'>APPROVE</button>  <button id='status' value='DISAPPROVED' onclick='disapprove("+arr[i].id+")'>DISAPPROVE</button></td></tr>";}
+                "</td><td><button id='status' value='APPROVED' onclick='approve("+arr[i].id+")'>APPROVE</button>  <button id='status' value='DISAPPROVED' onclick='disapprove("+arr[i].id+")'>DISAPPROVE</button></td></tr>";
         }
+     }
     out += "</table>";
     document.getElementById("userTable").innerHTML = out;
 }

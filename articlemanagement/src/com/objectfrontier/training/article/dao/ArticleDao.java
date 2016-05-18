@@ -8,5 +8,8 @@ public interface ArticleDao {
 
 	/* To  get list of articles available in database */
 	 ArrayList<Article> getListOfArticles() throws Exception;
+	 
+	 /* To  get author details using authorId */
+	 Article getAuthorDetailsById(long authorId) throws Exception;
 
 }
