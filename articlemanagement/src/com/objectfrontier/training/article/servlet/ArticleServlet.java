@@ -28,9 +28,9 @@ public class ArticleServlet extends HttpServlet {
 				res.setContentType("application/json");
 				long authorId  = Long.parseLong(idString);		
 			    Article article = articleservice.getAuthorDetailsById(authorId);
-			    String userString = JsonUtil.toJSON(article);
+			    String articleString = JsonUtil.toJSON(article);
 			    PrintWriter pw = res.getWriter(); 
-			    res.getWriter().write(userString);
+			    res.getWriter().write(articleString);
 			    pw.close();
 			} else {
 				res.setContentType("application/json");

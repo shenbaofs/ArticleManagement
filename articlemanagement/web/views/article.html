@@ -8,21 +8,21 @@
     <div id="header">
         <h1>ARTICLES</h1>
     </div>
-
-    <div id="nav">
-        <li><a href="Categories.html">CATEGORIES</a></li>
+    <div id="main">
+        <div id="nav">
+            <li><a href="Categories.html">CATEGORIES</a></li>
+        </div>
+        
+        <div id="section">
+            <select id="mySelect" onchange="getlistofarticles()">
+                <option value="ALL">ALL</option>
+                <option value="AngularJs">AngularJs</option>
+                <option value="BUSINESS">BUSINESS</option>
+                <option value="SOCIALMEDIA">SOCIALMEDIA</option>
+                <option value="WORKWORLD">WORKWORLD</option>
+            </select>
+        <div id="articleList"></div>
     </div>
-
-    <div id="section">
-        <select id="mySelect" onchange="getlistofarticles()">
-            <option value="ALL">ALL</option>
-            <option value="AngularJs">AngularJs</option>
-            <option value="BUSINESS">BUSINESS</option>
-            <option value="SOCIALMEDIA">SOCIALMEDIA</option>
-            <option value="WORKWORLD">WORKWORLD</option>
-        </select>
-    </div>
-    <br>
-    <div id="articleList"></div>
+   
 </body>
 </html>

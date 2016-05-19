@@ -11,7 +11,7 @@ function myFunction(response) {
             if(arr[i].category == "AngularJs") {
                 out += "<li><dt>ArticleName : </dt><dd>" +
                 arr[i].articleName +
-                "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='getdetailsOfAuthor("+arr[i].authorId+")'>" +
+                "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                 arr[i].authorName +
                 "</a></dd><dt>Category : </dt><dd>" +
                 arr[i].category +
@@ -33,7 +33,7 @@ function myFunction(response) {
                 } else if(arr[i].category == "Business") {
                     out += "<li><dt>ArticleName : </dt><dd>" +
                     arr[i].articleName +
-                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='getdetailsOfAuthor("+arr[i].authorId+")'>" +
+                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                     arr[i].authorName +
                     "</a></dd><dt>Category : </dt><dd>" +
                     arr[i].category +
@@ -55,7 +55,7 @@ function myFunction(response) {
             }  else if(arr[i].category == "Workworld") {
                     out += "<li><dt>ArticleName : </dt><dd>" +
                     arr[i].articleName +
-                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='getdetailsOfAuthor("+arr[i].authorId+")'>" +
+                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                     arr[i].authorName +
                     "</a></dd><dt>Category : </dt><dd>" +
                     arr[i].category +
@@ -77,7 +77,7 @@ function myFunction(response) {
             }  else if(arr[i].category == "Socialmedia") {
                     out += "<li><dt>ArticleName : </dt><dd>" +
                     arr[i].articleName +
-                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='getdetailsOfAuthor("+arr[i].authorId+")'>" +
+                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                     arr[i].authorName +
                     "</a></dd><dt>Category : </dt><dd>" +
                     arr[i].category +
@@ -116,19 +116,40 @@ function getArticlesService(category) {
 
 function authorDetails(response) {
         var value = JSON.parse(response);
-        var i;
-        var out = "<ul>";
-        out += "<li><dt>AuthorName : </dt><dd>" +
+        var out;
+        out = "<div id='main'><div id='authordetails'><label>AuthorName : </label>" +
                 value.authorName +
-                "</dd><dt>Author Carrer Profile : </dt><dd>" + 
+                "</label>Author Carreer Profile : </label>" + 
                 value.authorCarrerProfile +
-                "</dd>";
-       out += "</ul>";
+                "</div>";
+         out += "</div>";        
        document.getElementById("authordetails").innerHTML = out;
 }
 
-function getdetailsOfAuthor(authorId) {
+function getCookie(cname) {
+                console.log("hello");
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) === 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+}
+
+var authorIdVal = 0;
+function setAuthorId(authorId){
+    document.cookie = "authorIdVal=" + authorId;
+}
+
+function getdetailsOfAuthor() {
     var xmlhttp = new XMLHttpRequest();
+    var authorId = getCookie("authorIdVal");
     var url = "http://localhost:8080/articlemanagement/Article?authorId="+authorId;
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.status == 200) {

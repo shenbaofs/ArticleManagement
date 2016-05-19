@@ -8,7 +8,7 @@ function getlistofusers()  {
 function approve(arr) {
     var user = {};
     for(var userVal in userList) {
-      if(userList[userVal].id == arr){
+      if(userList[userVal].id == arr) { 
         user = userList[userVal];
       }
     }
@@ -27,16 +27,16 @@ function approve(arr) {
 function disapprove(arr) {
     var user = {};
     for(var userVal in userList) {
-      if(userVal.id == arr){
-        user = userVal;
+       if(userList[userVal].id == arr) {
+        user = userList[userVal];
       }
     }
-    user.status = "DISAPPROVED";
+        user.status = "DISAPPROVED";
     var xhttp = new XMLHttpRequest();
     var url = "http://localhost:8080/articlemanagement/User?";
     xhttp.onload = function() {
         if(xhttp.readyState == 4 && xhttp.status  === 200) {
-            alert("USER APPROVED SUCCESSFULLY");
+            alert("USER DISAPPROVED SUCCESSFULLY");
         }
     };
      xhttp.open('Put', url, true);
