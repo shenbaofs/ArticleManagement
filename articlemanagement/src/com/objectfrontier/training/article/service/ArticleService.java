@@ -11,5 +11,11 @@ public interface ArticleService {
     
     /* To get author details using authorId */
     Article getAuthorDetailsById(long authorId);
+    
+    /* To get article details using articleId */
+    Article getArticleDetailsById(long articleId);
+    
+    /* To upload article */
+	Article uploadArticle(Article article);
 
 }

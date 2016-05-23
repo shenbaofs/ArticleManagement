@@ -3,11 +3,11 @@ function myFunction(response) {
         var i;
         var out = "<ul>";
         for(i = 0; i < arr.length; i++) {
-                out += "<li><dt>AuthorName : </dt><dd>" +
+                out += "<div>AuthorName : " +
                 arr[i].authorName +
-                "</dd><dt>Author Carrer Profile : </dt><dd>" +
+                "</div><div><Author Carrer Profile : " +
                 arr[i].authorCarrerProfile +
-                "</dd>";
+                "</div>";
             }
     out += "</ul>";
     document.getElementById("authordetails").innerHTML = out;

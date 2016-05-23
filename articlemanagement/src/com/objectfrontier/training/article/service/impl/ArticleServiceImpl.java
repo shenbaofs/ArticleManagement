@@ -48,4 +48,32 @@ public class ArticleServiceImpl implements ArticleService {
 	    }
 		return article;
 	}
+	
+	@Override
+	public Article getArticleDetailsById(long articleId) {
+		
+		Article article = new Article();
+		try {
+			article = articleDao.getArticleDetailsById(articleId);
+			if(article == null) {
+				throw new AppException(AppErrorCode.ARTICLE_NOT_FOUND);
+			} 
+	    } catch (Exception e) {
+			throw new AppException(e);
+	    }
+		return article;
+	}
+	
+	@Override	 
+	public Article uploadArticle(Article article) {
+		
+		try {
+			ArticleDao articleDao = new ArticleDaoImpl();
+			long articleId = articleDao.uploadArticle(article);
+			article.setArticleId(articleId);
+		} catch(Exception e) {
+			throw new AppException(e);
+		}
+		return article;
+	}
 }

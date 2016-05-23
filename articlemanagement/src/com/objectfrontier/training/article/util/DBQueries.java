@@ -44,15 +44,40 @@ public class DBQueries {
 	        toString();
 	
 	public static String LIST_OF_ARTICLES_QUERY = new StringBuilder().
-				append("SELECT articles.id, articles.Article_Name, articles.Category,    ").
-				append("articles.Description, articles.date_Of_Publish, articles.status, ").
-                append("authordetails.Author_Id, authordetails.Author_Name ").
+				append("SELECT articles.Article_Id, articles.Article_Name, articles.Category,    ").
+				append("articles.Description, articles.Content, articles.date_Of_Publish, articles.status, ").
+                append("authordetails.Author_Id, authordetails.Author_Name                       ").
                 append("FROM  articles INNER JOIN authordetails ON articles.Author_Id=authordetails.Author_Id").
 			toString();
 	
 	public static String GET_AUTHOR_DETAILS_BY_AUTHOR_ID_QUERY = new StringBuilder().
 			append(" SELECT *	          ").
-		    append(" FROM   authordetails   ").
-  		    append(" WHERE  Author_Id = ?  ").
+		    append(" FROM   authordetails ").
+  		    append(" WHERE  Author_Id = ? ").
 		toString();
+	
+	public static String GET_ARTICLE_DETAILS_BY_ARTICLE_ID_QUERY = new StringBuilder().
+			append(" SELECT articles.*, authordetails.Author_Name  ").
+		    append(" FROM   articles LEFT JOIN authordetails ON articles.Author_Id = authordetails.Author_Id").
+  		    append(" WHERE  Article_Id = ?").
+		toString();
+	
+	public static String UPLOAD_AUTHOR_DETAILS_QUERY = new StringBuilder().
+		    append("INSERT INTO authordetails            ").
+		    append("            (Author_Name,            ").
+		    append("             Author-Carrer_Profile,  ").
+		    append("             Author_Image)           ").
+		    append("VALUES      (?, ?, ?) ").
+		  toString();
+	
+	public static String  UPLOAD_ARTICLE_QUERY = new StringBuilder().
+		    append("INSERT INTO articles              ").
+		    append("            (Article_Name,        ").
+		    append("             Category,            ").
+		    append("             Description,         ").
+		    append("             Content,             ").
+		    append("             date_Of_Publish,     ").
+		    append("             status)              ").
+		    append("VALUES      (?, ?, ?, ?, ?, ?)    ").
+		  toString();
 }

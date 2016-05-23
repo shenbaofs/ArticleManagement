@@ -11,5 +11,11 @@ public interface ArticleDao {
 	 
 	 /* To  get author details using authorId */
 	 Article getAuthorDetailsById(long authorId) throws Exception;
+	 
+	 /* To  get article details using articleId */
+	 Article getArticleDetailsById(long articleId) throws Exception;
+	 
+	 /* To upload author details */
+	long uploadArticle(Article article) throws Exception;
 
 }

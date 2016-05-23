@@ -15,7 +15,7 @@ public enum AppErrorCode {
 	USER_DETAILS_NOT_UPDATED(111, "user details not updated"),
 	WAITING_FOR_APPROVAL_CONTACT_ADMIN(112, "waiting for approval contact admin"), 
 	USER_STATUS_NOT_UPDATED(113, "status not updated"), 
-	AUTHOR_NOT_FOUND(114,"author details not found");
+	AUTHOR_NOT_FOUND(114,"author details not found"), ARTICLE_NOT_FOUND(115, "article details not found");
 	
 	private final int code;
     private final String message;	

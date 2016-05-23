@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class Article {
 	
-	private long id;
+	private long    articleId;
 	private String  articleName;
 	private String  category;
 	private String  description;
+	private String  content;
 	private Date    dateOfPublish;
 	private String  status;
 	private long    authorId;
@@ -17,12 +18,13 @@ public class Article {
 	
 	public Article() {}
 	
-	public Article(String articleName, String category, String description, Date dateOfPublish, 
+	public Article(String articleName, String category, String description, String  content, Date dateOfPublish, 
 				   String status, long authorId, String authorName, String authorCarrerProfile, byte[] authorImage) {
 	
 		this.articleName   = articleName;
 		this.category      = category;
 		this.description   = description;
+		this.content       = content;
 		this.dateOfPublish = dateOfPublish;
 		this.status        = status;
 		this.authorId      = authorId;
@@ -31,12 +33,12 @@ public class Article {
 		this.authorImage   = authorImage;
 	}
 
-	public long getId() {
-		return id;
+	public long getArticleId() {
+		return articleId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setArticleId(long articleId) {
+		this.articleId = articleId;
 	}
 
 	public String getArticleName() {
@@ -61,6 +63,14 @@ public class Article {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Date getDateOfPublish() {

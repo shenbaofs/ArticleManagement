@@ -23,11 +23,11 @@ function myFunction(response) {
                 arr[i].status +
                 "</dd>";
                 if(arr[i].status == 'APPROVED') {
-                    out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                 } else if(arr[i].status == 'DISAPPROVED') {
-                     out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
+                     out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                 } else if(arr[i].status == 'WFA') {
-                    out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                 } 
                     out += "</li>";
                 } else if(arr[i].category == "Business") {
@@ -45,11 +45,11 @@ function myFunction(response) {
                     arr[i].status +
                     "</dd>";
                     if(arr[i].status == 'APPROVED') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                     } else if(arr[i].status == 'DISAPPROVED') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                     } else if(arr[i].status == 'WFA') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                     }
                         out += "</li>";
             }  else if(arr[i].category == "Workworld") {
@@ -67,11 +67,11 @@ function myFunction(response) {
                     arr[i].status +
                     "</dd>";
                     if(arr[i].status == 'APPROVED') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                     } else if(arr[i].status == 'DISAPPROVED') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                     } else if(arr[i].status == 'WFA') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                     }
                         out += "</li>";
             }  else if(arr[i].category == "Socialmedia") {
@@ -89,11 +89,11 @@ function myFunction(response) {
                     arr[i].status +
                     "</dd>";
                     if(arr[i].status == 'APPROVED') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                     } else if(arr[i].status == 'DISAPPROVED') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                     } else if(arr[i].status == 'WFA') {
-                        out += "<dd> <button id = 'status' value = 'view'>VIEW</button> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
                     }
                    out += "</li>";
             } 
@@ -110,20 +110,32 @@ function getArticlesService(category) {
             myFunction(xmlhttp.responseText);
         }
     };
-    xmlhttp.open("GET", url, true);
+    xmlhttp.open("GET", url, true);  
     xmlhttp.send();
 }
 
 function authorDetails(response) {
         var value = JSON.parse(response);
+        var b64Data =  value.authorImage;
+        var byteCharacters = atob(b64Data);
+        var byteNumbers = new Array(byteCharacters.length);
+        for (var i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        var arrayBufferView = new Uint8Array(byteNumbers);   
         var out;
-        out = "<div id='main'><div id='authordetails'><label>AuthorName : </label>" +
-                value.authorName +
-                "</label>Author Carreer Profile : </label>" + 
-                value.authorCarrerProfile +
-                "</div>";
+        out = "<div id='main'><img id='photo'></img><div id='authordetails'>AuthorName : " +
+                                     value.authorName +
+                             "</div><div>Author Carreer Profile : " + 
+                                    value.authorCarrerProfile +
+                            "</div>";
          out += "</div>";        
        document.getElementById("authordetails").innerHTML = out;
+       var blob = new Blob( [ arrayBufferView ], { type: "image/jpeg" } );
+       var urlCreator = window.URL || window.webkitURL;
+       var imageUrl = urlCreator.createObjectURL( blob );
+       var img = document.querySelector( "#photo" );
+       img.src = imageUrl;
 }
 
 function getCookie(cname) {
@@ -147,13 +159,49 @@ function setAuthorId(authorId){
     document.cookie = "authorIdVal=" + authorId;
 }
 
-function getdetailsOfAuthor() {
+function getAuthorDetails() {
     var xmlhttp = new XMLHttpRequest();
     var authorId = getCookie("authorIdVal");
     var url = "http://localhost:8080/articlemanagement/Article?authorId="+authorId;
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.status == 200) {
             authorDetails(xmlhttp.responseText);
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function articleDetails(response) {
+         var value = JSON.parse(response);
+        var out;
+        out = "<div id='main'><div>Article Name : " +
+                                     value.articleName +
+                             "</div><div>Date of Publish : " + 
+                                    value.dateOfPublish + 
+                             "</div><div>Author Name : " + 
+                                    value.authorName +
+                             "</div><div>Category: " + 
+                                    value.category +
+                             "</div><div>Description: " + 
+                                    value.description + 
+                            "</div>";
+         out += "</div>";        
+       document.getElementById("articledetails").innerHTML = out;
+}
+
+var articleIdVal = 0;
+function setArticleId(articleId){
+    document.cookie = "articleIdVal=" + articleId;
+}
+
+function getArticleDetails() {
+    var xmlhttp = new XMLHttpRequest();
+    var articleId = getCookie("articleIdVal");
+    var url = "http://localhost:8080/articlemanagement/Article?articleId="+articleId;
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.status == 200) {
+            articleDetails(xmlhttp.responseText);
         }
     };
     xmlhttp.open("GET", url, true);
