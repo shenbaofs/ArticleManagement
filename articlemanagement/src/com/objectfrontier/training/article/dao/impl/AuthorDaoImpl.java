@@ -24,5 +24,5 @@ public class AuthorDaoImpl implements AuthorDao {
 		ResultSet rs = ps.getGeneratedKeys();
 		rs.next();
 		return rs.getLong(1);
-	 }
+	}
 }

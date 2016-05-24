@@ -62,6 +62,12 @@ public class DBQueries {
   		    append(" WHERE  Article_Id = ?").
 		toString();
 	
+	public static String UPDATE_ARTICLE_STATUS_QUERY = new StringBuilder().
+		    append("UPDATE userdetails         ").
+		    append("SET    status = ?          ").
+		    append("WHERE  Article_Id = ?      ").
+		toString();
+	
 	public static String UPLOAD_AUTHOR_DETAILS_QUERY = new StringBuilder().
 		    append("INSERT INTO authordetails            ").
 		    append("            (Author_Name,            ").

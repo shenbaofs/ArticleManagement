@@ -22,14 +22,14 @@ public class ArticleServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) { 
 			
-		String idString = req.getParameter("authorId");
+		String authorIdString = req.getParameter("authorId");
 		String category  = req.getParameter("category");
-		String idString1 = req.getParameter("articleId");
+		String articleIdString = req.getParameter("articleId");
 		
 		try {
-			if(!(idString == null)) {
+			if(!(authorIdString == null)) {
 				res.setContentType("application/json");
-				long authorId  = Long.parseLong(idString);		
+				long authorId  = Long.parseLong(authorIdString);		
 			    Article article = articleservice.getAuthorDetailsById(authorId);
 			    String articleString = JsonUtil.toJSON(article);
 			    PrintWriter pw = res.getWriter(); 
@@ -37,19 +37,18 @@ public class ArticleServlet extends HttpServlet {
 			    pw.close();
 			} else if(!(category == null)) {
 				res.setContentType("application/json");
-				
 				ArrayList<Article> articles = articleservice.getListOfArticles(category);
 				String articleString = JsonUtil.toJSON(articles);
 				PrintWriter pw = res.getWriter(); 
 				res.getWriter().write(articleString);
 				pw.close();
-			} else if(!(idString1 == null)) {
-				long articleId  = Long.parseLong(idString1);	
+			} else if(!(articleIdString == null)) {
+				long articleId  = Long.parseLong(articleIdString);	
 				res.setContentType("application/json");
 				Article article = articleservice.getArticleDetailsById(articleId);
-				String articleIdString = JsonUtil.toJSON(article);
+				String articleIdStringJson = JsonUtil.toJSON(article);
 				PrintWriter pw = res.getWriter(); 
-				res.getWriter().write(articleIdString);
+				res.getWriter().write(articleIdStringJson);
 				pw.close();
 			} 
 		}  catch (Exception e) {	
@@ -74,4 +73,23 @@ public class ArticleServlet extends HttpServlet {
 				throw new AppException(e);
 			}
     }
+	
+	@Override
+	 public void doPut(HttpServletRequest req, HttpServletResponse res) {
+			
+			try {
+				res.setContentType("application/json");
+				String status = req.getParameter("status");
+				String idString1 = req.getParameter("articleId");
+				long articleId  = Long.parseLong(idString1);
+				boolean article = articleservice.updateArticleStatus(status, articleId);
+				String userString = JsonUtil.toJSON(article);
+	            PrintWriter pw = res.getWriter(); 
+	            res.getWriter().write(userString);
+	            pw.close();
+	            res.setStatus(200);   
+	        } catch (Exception e) {
+	        	throw new AppException(e);
+	        }
+	}
 }

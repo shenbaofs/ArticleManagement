@@ -3,8 +3,6 @@ package com.objectfrontier.training.article.util;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.objectfrontier.training.article.model.AppErrorCode;
 import com.objectfrontier.training.article.model.AppException;
@@ -13,6 +11,8 @@ import com.objectfrontier.training.article.model.User;
 public class ArticleManagementValidation {
 	
 	AppErrorCode errorcode = null;
+	String PASSWORD_PATTERN =  "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+	String PHONENO_PATTERN = "d{10}";
 	
 	public void validateUserDetails(User user) throws AppException {
 	
@@ -20,8 +20,9 @@ public class ArticleManagementValidation {
 			throw new AppException(AppErrorCode.USER_NAME_NULL);    
 		}
 		
-		if (user.getPassword()   == null || user.getPassword().isEmpty()) { 
-			throw new AppException(AppErrorCode.USER_PASSWORD_NULL);  
+		if (user.getPassword()   == null || user.getPassword().isEmpty() || 
+				(!(user.getPassword().matches(PASSWORD_PATTERN)))) { 
+			throw new AppException(AppErrorCode.PASSWORD_PATTERN_NOT_MATCHES);  
 		}
 		
 		if (user.getEmailId()   == null || user.getEmailId().isEmpty())	{
@@ -32,20 +33,11 @@ public class ArticleManagementValidation {
 		dateOfBirthValidation(user.getDateOfBirth());
 	}	
 	
-	final boolean passwordValidation(String password) {
-		
-		Pattern pattern = null;
-		Matcher matcher;
-		String PASSWORD_PATTERN =  "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
-		matcher = pattern.matcher(password);
-		return matcher.matches();
-	}
-	
 	final void phoneNoValidation(long PhoneNo) {
 	    
 		Long phoneno = new Long(PhoneNo);
-	    String str = phoneno.toString();
-	    if(str.length() < 10 || str.length() > 10) { 
+	    String phonenoString = phoneno.toString();
+	    if(phonenoString.length() < 10 || phonenoString.length() > 10 || (!(phonenoString.matches(PHONENO_PATTERN)))) { 
 	    	throw new AppException(AppErrorCode.INVALID_PHONE_NO);
 	    }
 	}
@@ -73,8 +65,9 @@ public class ArticleManagementValidation {
 			throw new AppException(AppErrorCode.USER_NAME_NULL);
 		}
 		
-		if (password   == null || password.isEmpty()) { 
-			throw new AppException(AppErrorCode.USER_PASSWORD_NULL);
+		if (password == null ||password.isEmpty() || 
+				(!(password.matches(PASSWORD_PATTERN)))) { 
+			throw new AppException(AppErrorCode.PASSWORD_PATTERN_NOT_MATCHES);  
 		}
 	}
 } 

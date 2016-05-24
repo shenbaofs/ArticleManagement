@@ -35,6 +35,20 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 	
 	@Override
+	public boolean updateArticleStatus(String status, long articleId) {
+		
+		try {
+			int rowsAffected = articleDao.updateArticleStatus(status, articleId);
+			if(rowsAffected != 1) {
+				throw new AppException(AppErrorCode.ARTICLE_STATUS_NOT_UPDATED);
+			} 
+		} catch(Exception e) {
+			throw new AppException(e);
+		}
+		return true;
+	}
+	
+	@Override
 	public Article getAuthorDetailsById(long authorId) {
 		
 		Article article = new Article();

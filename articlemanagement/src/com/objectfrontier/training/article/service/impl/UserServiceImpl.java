@@ -87,6 +87,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateUserDetails(User user) {
 		
+		validation.validateUserDetails(user);
 		try {
 			int rowsAffected = userDao.updateUserDetails(user);
 			if(rowsAffected != 1) {

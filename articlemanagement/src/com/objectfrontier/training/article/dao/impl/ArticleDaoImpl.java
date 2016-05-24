@@ -13,6 +13,7 @@ import com.objectfrontier.training.article.util.DataBaseUtil;
 import static com.objectfrontier.training.article.util.DBQueries.GET_AUTHOR_DETAILS_BY_AUTHOR_ID_QUERY;
 import static com.objectfrontier.training.article.util.DBQueries.GET_ARTICLE_DETAILS_BY_ARTICLE_ID_QUERY;
 import static com.objectfrontier.training.article.util.DBQueries.LIST_OF_ARTICLES_QUERY;
+import static com.objectfrontier.training.article.util.DBQueries.UPDATE_ARTICLE_STATUS_QUERY;
 import static com.objectfrontier.training.article.util.DBQueries.UPLOAD_ARTICLE_QUERY;
 
 public class ArticleDaoImpl implements ArticleDao {
@@ -76,6 +77,17 @@ public class ArticleDaoImpl implements ArticleDao {
 			article.setDateOfPublish(rs.getDate("date_Of_Publish"));
 		}
 		return article;
+	}
+	
+	@Override
+	public int updateArticleStatus(String status, long articleId) throws Exception {
+		
+		Connection connection = DataBaseUtil.getDbConnect();
+		PreparedStatement ps = connection.prepareStatement(UPDATE_ARTICLE_STATUS_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, status);
+		ps.setLong(2, articleId);
+		int rowsAffected = ps.executeUpdate();
+		return rowsAffected;
 	}
 	
 	@Override

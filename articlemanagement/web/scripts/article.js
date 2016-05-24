@@ -1,3 +1,5 @@
+var articleList = [];
+
 function getlistofarticles()  {
         var category = document.getElementById("mySelect").value;
         getArticlesService(category);
@@ -9,9 +11,9 @@ function myFunction(response) {
         var out = "<ul>";
         for(i = 0; i < arr.length; i++) {
             if(arr[i].category == "AngularJs") {
-                out += "<li><dt>ArticleName : </dt><dd>" +
+                out += "<li><dt>Article Name : </dt><dd>" +
                 arr[i].articleName +
-                "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
+                "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                 arr[i].authorName +
                 "</a></dd><dt>Category : </dt><dd>" +
                 arr[i].category +
@@ -23,17 +25,17 @@ function myFunction(response) {
                 arr[i].status +
                 "</dd>";
                 if(arr[i].status == 'APPROVED') {
-                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                 } else if(arr[i].status == 'DISAPPROVED') {
                      out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                 } else if(arr[i].status == 'WFA') {
-                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                 } 
                     out += "</li>";
                 } else if(arr[i].category == "Business") {
-                    out += "<li><dt>ArticleName : </dt><dd>" +
+                    out += "<li><dt>Article Name : </dt><dd>" +
                     arr[i].articleName +
-                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
+                    "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                     arr[i].authorName +
                     "</a></dd><dt>Category : </dt><dd>" +
                     arr[i].category +
@@ -45,17 +47,17 @@ function myFunction(response) {
                     arr[i].status +
                     "</dd>";
                     if(arr[i].status == 'APPROVED') {
-                        out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                     } else if(arr[i].status == 'DISAPPROVED') {
                         out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                     } else if(arr[i].status == 'WFA') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                     }
                         out += "</li>";
-            }  else if(arr[i].category == "Workworld") {
-                    out += "<li><dt>ArticleName : </dt><dd>" +
+            } else if(arr[i].category == "Workworld") {
+                    out += "<li><dt>Article Name : </dt><dd>" +
                     arr[i].articleName +
-                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
+                    "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                     arr[i].authorName +
                     "</a></dd><dt>Category : </dt><dd>" +
                     arr[i].category +
@@ -67,17 +69,17 @@ function myFunction(response) {
                     arr[i].status +
                     "</dd>";
                     if(arr[i].status == 'APPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                     } else if(arr[i].status == 'DISAPPROVED') {
                         out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                     } else if(arr[i].status == 'WFA') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                     }
                         out += "</li>";
-            }  else if(arr[i].category == "Socialmedia") {
-                    out += "<li><dt>ArticleName : </dt><dd>" +
+            } else if(arr[i].category == "Socialmedia") {
+                    out += "<li><dt>Article Name : </dt><dd>" +
                     arr[i].articleName +
-                    "</dd><dt>AuthorName : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
+                    "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
                     arr[i].authorName +
                     "</a></dd><dt>Category : </dt><dd>" +
                     arr[i].category +
@@ -89,11 +91,11 @@ function myFunction(response) {
                     arr[i].status +
                     "</dd>";
                     if(arr[i].status == 'APPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                     } else if(arr[i].status == 'DISAPPROVED') {
                         out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
                     } else if(arr[i].status == 'WFA') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved'>DISAPPROOVE</button></dd>"
+                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
                     }
                    out += "</li>";
             } 

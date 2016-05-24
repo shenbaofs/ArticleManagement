@@ -15,6 +15,9 @@ public interface ArticleService {
     /* To get article details using articleId */
     Article getArticleDetailsById(long articleId);
     
+	/* To update article status */
+    boolean updateArticleStatus(String status, long articleId);
+    
     /* To upload article */
 	Article uploadArticle(Article article);
 
