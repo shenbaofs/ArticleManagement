@@ -1,16 +1,46 @@
+var role = getCookie("role");
 var articleList = [];
+var category  = "";
 
 function getlistofarticles()  {
-        var category = document.getElementById("mySelect").value;
+        category = document.getElementById("mySelect").value;
         getArticlesService(category);
+}
+
+function approve(arr) {
+    var article = articleList[arr-1];
+    var xhttp = new XMLHttpRequest();
+    var url = "http://localhost:8080/articlemanagement/Article?articleId="+article.articleId +"&status=APPROVED";
+    xhttp.onload = function() {
+        if(xhttp.readyState == 4 && xhttp.status  === 200) {
+            alert("USER APPROVED SUCCESSFULLY");
+        }
+    };
+     article.status = "APPROVED";
+     xhttp.open('Put', url, true);
+     xhttp.send();
+}
+
+function disapprove(arr) {
+    var article = articleList[arr-1];
+    var xhttp = new XMLHttpRequest();
+    var url = "http://localhost:8080/articlemanagement/Article?articleId="+article.articleId +"&status=DISAPPROVED";
+    xhttp.onload = function() {
+        if(xhttp.readyState == 4 && xhttp.status  === 200) {
+            alert("USER DISAPPROVED SUCCESSFULLY");
+        }
+    };
+     article.status = "DISAPPROVED";
+     xhttp.open('Put', url, true);
+     xhttp.send();
 }
 
 function myFunction(response) {
         var arr = JSON.parse(response);
+        articleList = arr;
         var i;
         var out = "<ul>";
         for(i = 0; i < arr.length; i++) {
-            if(arr[i].category == "AngularJs") {
                 out += "<li><dt>Article Name : </dt><dd>" +
                 arr[i].articleName +
                 "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
@@ -24,81 +54,18 @@ function myFunction(response) {
                 "</dd><dt>Status : </dt><dd>" +
                 arr[i].status +
                 "</dd>";
-                if(arr[i].status == 'APPROVED') {
-                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                } else if(arr[i].status == 'DISAPPROVED') {
-                     out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
-                } else if(arr[i].status == 'WFA') {
-                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                } 
+                if(role == 'admin') {
+                    if(arr[i].status == 'APPROVED') {
+                        out += "<dd> <a id='status' href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROVE</button></dd>"
+                    } else if(arr[i].status == 'DISAPPROVED') {
+                        out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved' onclick='approve("+arr[i].articleId+")'>APPROVE</button></dd>"
+                    } else if(arr[i].status == 'WFA') {
+                        out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved' onclick='approve("+arr[i].articleId+")'>APPROVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROVE</button></dd>"
+                    } 
+                } else {
+                    out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a>"
+                }
                     out += "</li>";
-                } else if(arr[i].category == "Business") {
-                    out += "<li><dt>Article Name : </dt><dd>" +
-                    arr[i].articleName +
-                    "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
-                    arr[i].authorName +
-                    "</a></dd><dt>Category : </dt><dd>" +
-                    arr[i].category +
-                    "</dd><dt>Description : </dt><dd>" +
-                    arr[i].description +
-                    "</dd><dt>Date Of Publish : </dt><dd>" +
-                    arr[i].dateOfPublish +
-                    "</dd><dt>Status : </dt><dd>" +
-                    arr[i].status +
-                    "</dd>";
-                    if(arr[i].status == 'APPROVED') {
-                        out += "<dd> <a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                    } else if(arr[i].status == 'DISAPPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
-                    } else if(arr[i].status == 'WFA') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                    }
-                        out += "</li>";
-            } else if(arr[i].category == "Workworld") {
-                    out += "<li><dt>Article Name : </dt><dd>" +
-                    arr[i].articleName +
-                    "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
-                    arr[i].authorName +
-                    "</a></dd><dt>Category : </dt><dd>" +
-                    arr[i].category +
-                    "</dd><dt>Description : </dt><dd>" +
-                    arr[i].description +
-                    "</dd><dt>Date Of Publish : </dt><dd>" +
-                    arr[i].dateOfPublish +
-                    "</dd><dt>Status : </dt><dd>" +
-                    arr[i].status +
-                    "</dd>";
-                    if(arr[i].status == 'APPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                    } else if(arr[i].status == 'DISAPPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
-                    } else if(arr[i].status == 'WFA') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                    }
-                        out += "</li>";
-            } else if(arr[i].category == "Socialmedia") {
-                    out += "<li><dt>Article Name : </dt><dd>" +
-                    arr[i].articleName +
-                    "</dd><dt>Author Name : </dt><dd><a href='author.html' onclick='setAuthorId("+arr[i].authorId+")'>" +
-                    arr[i].authorName +
-                    "</a></dd><dt>Category : </dt><dd>" +
-                    arr[i].category +
-                    "</dd><dt>Description : </dt><dd>" +
-                    arr[i].description +
-                    "</dd><dt>Date Of Publish : </dt><dd>" +
-                    arr[i].dateOfPublish +
-                    "</dd><dt>Status : </dt><dd>" +
-                    arr[i].status +
-                    "</dd>";
-                    if(arr[i].status == 'APPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                    } else if(arr[i].status == 'DISAPPROVED') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button></dd>"
-                    } else if(arr[i].status == 'WFA') {
-                        out += "<dd><a href='viewarticle.html' onclick='setArticleId("+arr[i].articleId+")'>VIEW</a> <button id = 'status' value = 'Approved'>APPROOVE</button> <button id = 'status' value = 'DisApproved' onclick='disapprove("+arr[i].articleId+")'>DISAPPROOVE</button></dd>"
-                    }
-                   out += "</li>";
-            } 
          }
     out += "</ul>";
     document.getElementById("articleList").innerHTML = out;

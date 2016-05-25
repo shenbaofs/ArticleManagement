@@ -34,20 +34,21 @@ public class DBQueries {
 	
 	public static String UPDATE_USER_QUERY = new StringBuilder().
 		    append("UPDATE userdetails   			  ").
-		    append("SET    username = ?, password = ?, email_id = ?, phone_no = ?, date_of_birth = ?, status = ? ").
+		    append("SET    username = ?, password = ?, email_id = ?, phone_no = ?, date_of_birth = ?, status = ?").
 		    append("WHERE  id = ?      				  ").
 		toString();
 	
 	public static String LIST_OF_USERS_QUERY = new StringBuilder().
-	            append("SELECT id, username, password, email_id, phone_no, date_of_birth, status  ").
+	            append("SELECT id, username, password, email_id, phone_no, date_of_birth, status").
 	            append("FROM   userdetails ").
 	        toString();
 	
 	public static String LIST_OF_ARTICLES_QUERY = new StringBuilder().
-				append("SELECT articles.Article_Id, articles.Article_Name, articles.Category,    ").
-				append("articles.Description, articles.Content, articles.date_Of_Publish, articles.status, ").
-                append("authordetails.Author_Id, authordetails.Author_Name                       ").
-                append("FROM  articles INNER JOIN authordetails ON articles.Author_Id=authordetails.Author_Id").
+				append("SELECT articles.Article_Id, articles.Article_Name,").
+				append("articles.Description, articles.Content, articles.date_Of_Publish, articles.status,").
+                append("authordetails.Author_Id, authordetails.Author_Name,").
+                append("category.Category_Name").
+                append(" FROM articles INNER JOIN authordetails ON articles.Author_Id=authordetails.Author_Id INNER JOIN category ON articles.Category_Id=category.Category_Id ").
 			toString();
 	
 	public static String GET_AUTHOR_DETAILS_BY_AUTHOR_ID_QUERY = new StringBuilder().
@@ -63,7 +64,7 @@ public class DBQueries {
 		toString();
 	
 	public static String UPDATE_ARTICLE_STATUS_QUERY = new StringBuilder().
-		    append("UPDATE userdetails         ").
+		    append("UPDATE articles         ").
 		    append("SET    status = ?          ").
 		    append("WHERE  Article_Id = ?      ").
 		toString();
@@ -85,5 +86,10 @@ public class DBQueries {
 		    append("             date_Of_Publish,     ").
 		    append("             status)              ").
 		    append("VALUES      (?, ?, ?, ?, ?, ?)    ").
+		  toString();
+	
+	public static String LIST_OF_CATAGORIES_QUERY = new StringBuilder().
+			append(" SELECT *	        ").
+		    append(" FROM   category    ").
 		  toString();
 }

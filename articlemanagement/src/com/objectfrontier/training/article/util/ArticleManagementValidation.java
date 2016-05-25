@@ -12,20 +12,19 @@ public class ArticleManagementValidation {
 	
 	AppErrorCode errorcode = null;
 	String PASSWORD_PATTERN =  "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
-	String PHONENO_PATTERN = "d{10}";
 	
 	public void validateUserDetails(User user) throws AppException {
 	
-		if (user.getUsername()== null || user.getUsername().isEmpty()) {
+		if (user.getUsername() == null || user.getUsername().isEmpty()) {
 			throw new AppException(AppErrorCode.USER_NAME_NULL);    
 		}
 		
-		if (user.getPassword()   == null || user.getPassword().isEmpty() || 
+		if (user.getPassword() == null || user.getPassword().isEmpty() || 
 				(!(user.getPassword().matches(PASSWORD_PATTERN)))) { 
 			throw new AppException(AppErrorCode.PASSWORD_PATTERN_NOT_MATCHES);  
 		}
 		
-		if (user.getEmailId()   == null || user.getEmailId().isEmpty())	{
+		if (user.getEmailId() == null || user.getEmailId().isEmpty())	{
 			throw new AppException( AppErrorCode.USER_EMAIL_ID_NULL);
 		}
 		
@@ -37,7 +36,7 @@ public class ArticleManagementValidation {
 	    
 		Long phoneno = new Long(PhoneNo);
 	    String phonenoString = phoneno.toString();
-	    if(phonenoString.length() < 10 || phonenoString.length() > 10 || (!(phonenoString.matches(PHONENO_PATTERN)))) { 
+	    if(phonenoString.length() < 10 || phonenoString.length() > 10) { 
 	    	throw new AppException(AppErrorCode.INVALID_PHONE_NO);
 	    }
 	}

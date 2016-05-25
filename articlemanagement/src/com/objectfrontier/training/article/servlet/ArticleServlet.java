@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.objectfrontier.training.article.model.AppException;
 import com.objectfrontier.training.article.model.Article;
+import com.objectfrontier.training.article.model.Author;
 import com.objectfrontier.training.article.model.JsonUtil;
 import com.objectfrontier.training.article.service.ArticleService;
 import com.objectfrontier.training.article.service.impl.ArticleServiceImpl;
@@ -30,10 +31,10 @@ public class ArticleServlet extends HttpServlet {
 			if(!(authorIdString == null)) {
 				res.setContentType("application/json");
 				long authorId  = Long.parseLong(authorIdString);		
-			    Article article = articleservice.getAuthorDetailsById(authorId);
-			    String articleString = JsonUtil.toJSON(article);
+			    Author author = articleservice.getAuthorDetailsById(authorId);
+			    String authorString = JsonUtil.toJSON(author);
 			    PrintWriter pw = res.getWriter(); 
-			    res.getWriter().write(articleString);
+			    res.getWriter().write(authorString);
 			    pw.close();
 			} else if(!(category == null)) {
 				res.setContentType("application/json");

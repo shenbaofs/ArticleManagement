@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="/articlemanagement/styles/Admin.css">
+    
 </head>
 
 <body>
@@ -14,7 +15,6 @@
             <div id="sidebar">
                 <ul>
                     <li><a href="profile.html">PROFILE</a></li>
-                    <li><a href="userlist.html">USERS</a></li>
                     <li><a href="article.html">ARTICLES</a></li>
                     <li><a href="Reports.html">REPORTS</a></li>
                 </ul>
@@ -26,23 +26,3 @@
             </div>
         </div>
     
-    <script>
-        function getCookie(cname) {
-                console.log("hello");
-                var name = cname + "=";
-                var ca = document.cookie.split(';');
-                for(var i=0; i<ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0)==' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(name) === 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-        }
-        var userName = getCookie("username");
-        document.getElementByID('username') = username;
-    </script>
-</body>

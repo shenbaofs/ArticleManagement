@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.mysql.jdbc.Blob;
 import com.objectfrontier.training.article.dao.ArticleDao;
 import com.objectfrontier.training.article.model.Article;
+import com.objectfrontier.training.article.model.Author;
 import com.objectfrontier.training.article.util.DataBaseUtil;
 
 import static com.objectfrontier.training.article.util.DBQueries.GET_AUTHOR_DETAILS_BY_AUTHOR_ID_QUERY;
@@ -29,7 +30,7 @@ public class ArticleDaoImpl implements ArticleDao {
         	Article article = new Article();
         	article.setArticleId(rs.getLong("Article_Id"));
         	article.setArticleName(rs.getString("Article_Name"));
-        	article.setCategory(rs.getString("Category"));
+        	article.setCategory(rs.getString("Category_Name"));
         	article.setDescription(rs.getString("Description"));
         	article.setContent(rs.getString("Content"));
         	article.setDateOfPublish(rs.getDate("date_Of_Publish"));
@@ -42,21 +43,21 @@ public class ArticleDaoImpl implements ArticleDao {
     } 
 	
 	@Override
-	public Article getAuthorDetailsById(long authorId) throws Exception {
+	public Author getAuthorDetailsById(long authorId) throws Exception {
 		
 		Connection connection = DataBaseUtil.getDbConnect();
 		PreparedStatement ps = connection.prepareStatement(GET_AUTHOR_DETAILS_BY_AUTHOR_ID_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);
 		ps.setLong(1, authorId);
 		ResultSet rs = ps.executeQuery();
-		Article article = new Article();
+		Author author = new Author();
 		if(rs.next()) {
-			article.setAuthorId(rs.getLong("Author_Id"));
-			article.setAuthorName(rs.getString("Author_Name"));
-			article.setAuthorCarrerProfile(rs.getString("Author_Carrer_Profile"));
+			author.setAuthorId(rs.getLong("Author_Id"));
+			author.setAuthorName(rs.getString("Author_Name"));
+			author.setAuthorCarrerProfile(rs.getString("Author_Carrer_Profile"));
 			Blob img = (Blob)rs.getBlob("Author_Image");
-			article.setAuthorImage(img.getBytes(1, (int)img.length()));
+			author.setAuthorImage(img.getBytes(1, (int)img.length()));
 		}
-		return article;
+		return author;
 	}
 	
 	@Override

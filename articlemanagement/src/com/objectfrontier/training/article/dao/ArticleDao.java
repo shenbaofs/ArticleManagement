@@ -3,6 +3,7 @@ package com.objectfrontier.training.article.dao;
 import java.util.ArrayList;
 
 import com.objectfrontier.training.article.model.Article;
+import com.objectfrontier.training.article.model.Author;
 
 public interface ArticleDao {
 
@@ -10,7 +11,7 @@ public interface ArticleDao {
 	 ArrayList<Article> getListOfArticles() throws Exception;
 	 
 	 /* To  get author details using authorId */
-	 Article getAuthorDetailsById(long authorId) throws Exception;
+	 Author getAuthorDetailsById(long authorId) throws Exception;
 	 
 	 /* To  get article details using articleId */
 	 Article getArticleDetailsById(long articleId) throws Exception;

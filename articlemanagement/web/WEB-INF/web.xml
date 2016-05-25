@@ -23,6 +23,11 @@
         </servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>Category</servlet-name>
+        <servlet-class>com.objectfrontier.training.article.servlet.CategoryServlet
+        </servlet-class>
+    </servlet>
     
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
@@ -37,6 +42,11 @@
     <servlet-mapping>
         <servlet-name>Article</servlet-name>
         <url-pattern>/Article</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Category</servlet-name>
+        <url-pattern>/Category</url-pattern>
     </servlet-mapping>
     
 	<resource-ref> 

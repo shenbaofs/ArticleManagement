@@ -20,6 +20,10 @@
     padding:10px;
 }
 
+#addcategory {
+    float:right;
+    padding:5px;
+}
 
 #articleList ul {
     list-style: none;

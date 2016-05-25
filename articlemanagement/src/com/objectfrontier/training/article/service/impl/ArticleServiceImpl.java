@@ -7,6 +7,7 @@ import com.objectfrontier.training.article.dao.impl.ArticleDaoImpl;
 import com.objectfrontier.training.article.model.AppErrorCode;
 import com.objectfrontier.training.article.model.AppException;
 import com.objectfrontier.training.article.model.Article;
+import com.objectfrontier.training.article.model.Author;
 import com.objectfrontier.training.article.service.ArticleService;
 
 public class ArticleServiceImpl implements ArticleService {
@@ -49,18 +50,18 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 	
 	@Override
-	public Article getAuthorDetailsById(long authorId) {
+	public Author getAuthorDetailsById(long authorId) {
 		
-		Article article = new Article();
+		Author author = new Author();
 		try {
-			article = articleDao.getAuthorDetailsById(authorId);
-			if(article == null) {
+			author = articleDao.getAuthorDetailsById(authorId);
+			if(author == null) {
 				throw new AppException(AppErrorCode.AUTHOR_NOT_FOUND);
 			} 
 	    } catch (Exception e) {
 			throw new AppException(e);
 	    }
-		return article;
+		return author;
 	}
 	
 	@Override
