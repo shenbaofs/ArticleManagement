@@ -124,7 +124,7 @@ function getCookie(cname) {
 }
 
 var authorIdVal = 0;
-function setAuthorId(authorId){
+function setAuthorId(authorId) {
     document.cookie = "authorIdVal=" + authorId;
 }
 
@@ -142,7 +142,7 @@ function getAuthorDetails() {
 }
 
 function articleDetails(response) {
-         var value = JSON.parse(response);
+        var value = JSON.parse(response);
         var out;
         out = "<div id='main'><div>Article Name : " +
                                      value.articleName +
@@ -160,7 +160,7 @@ function articleDetails(response) {
 }
 
 var articleIdVal = 0;
-function setArticleId(articleId){
+function setArticleId(articleId) {
     document.cookie = "articleIdVal=" + articleId;
 }
 

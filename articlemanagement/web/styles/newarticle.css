@@ -1,0 +1,51 @@
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:600px;
+    width: 20%;
+    float:left;
+    padding:5px;
+}
+
+#section {
+    width: 60%;
+    float:left;
+    padding:10px;
+}
+
+#uploadnewarticle {
+    float:right;
+    padding:5px;
+}
+
+#articleList ul {
+    list-style: none;
+}
+
+#articleList li:nth-child(odd) {
+    background: #87CEFA;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#articleList li:nth-child(even) {
+    background: #00CED1;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#articleList li dt {
+    text-transform: uppercase;
+}
+
+#articleList li dd {
+    margin-bottom: 15px;
+    margin-left: 15px;
+}

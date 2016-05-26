@@ -58,8 +58,8 @@ public class DBQueries {
 		toString();
 	
 	public static String GET_ARTICLE_DETAILS_BY_ARTICLE_ID_QUERY = new StringBuilder().
-			append(" SELECT articles.*, authordetails.Author_Name  ").
-		    append(" FROM   articles LEFT JOIN authordetails ON articles.Author_Id = authordetails.Author_Id").
+			append(" SELECT articles.*, authordetails.Author_Name, category.Category_Name  ").
+		    append(" FROM   articles LEFT JOIN authordetails ON articles.Author_Id = authordetails.Author_Id LEFT JOIN category ON articles.Category_Id = category.Category_Id").
   		    append(" WHERE  Article_Id = ?").
 		toString();
 	
