@@ -8,6 +8,8 @@ public interface CategoryDao {
 	
 	/* To  get list of categories available in database */
 	 ArrayList<Category> getListOfCategories() throws Exception;
-	 
 
+	 /* To add new category */
+	long addCategory(Category category) throws Exception;
 }
+

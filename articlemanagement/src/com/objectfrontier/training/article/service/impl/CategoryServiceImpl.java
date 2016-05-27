@@ -10,16 +10,29 @@ import com.objectfrontier.training.article.service.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
 	
+	CategoryDao categorydao = new CategoryDaoImpl(); 
+	
 	@Override
 	public ArrayList<Category> getListOfCategories() {
 		
 		try {
-				CategoryDao categorydao = new CategoryDaoImpl(); 
-				ArrayList<Category> categoryList = new ArrayList<Category>();
-				categoryList = categorydao.getListOfCategories();
-				return categoryList;
+			ArrayList<Category> categoryList = new ArrayList<Category>();
+			categoryList = categorydao.getListOfCategories();
+			return categoryList;
 		} catch(Exception e) {
 				throw new AppException(e);
 		}
+	}
+	
+	@Override	 
+	public Category addCategory(Category category) {
+		
+		try {
+			long categoryId = categorydao.addCategory(category);
+			category.setCategoryId(categoryId);
+		} catch(Exception e) {
+			throw new AppException(e);
+		}
+		return category;
 	}
 }

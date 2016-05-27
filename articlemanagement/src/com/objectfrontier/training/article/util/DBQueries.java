@@ -77,6 +77,10 @@ public class DBQueries {
 		    append("VALUES      (?, ?, ?) ").
 		  toString();
 	
+	public static String ADD_CATEGORY_QUERY = new StringBuilder().
+		    append(" INSERT INTO category (`Category_Name`) VALUES (?)").
+		  toString();
+	
 	public static String  UPLOAD_ARTICLE_QUERY = new StringBuilder().
 		    append("INSERT INTO articles              ").
 		    append("            (Article_Name,        ").

@@ -1,5 +1,6 @@
 package com.objectfrontier.training.article.servlet;
 
+import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -16,13 +17,13 @@ import com.objectfrontier.training.article.service.impl.CategoryServiceImpl;
 public class CategoryServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L; 
+	CategoryService categoryservice = new CategoryServiceImpl();
 	
 	@Override
 	public void doGet(HttpServletRequest req,HttpServletResponse res) { 
 		
 		try {
 				res.setContentType("application/json");
-				CategoryService categoryservice = new CategoryServiceImpl();
 				ArrayList<Category> category = categoryservice.getListOfCategories();
 				String userString = JsonUtil.toJSON(category);
 				PrintWriter pw = res.getWriter(); 
@@ -33,5 +34,23 @@ public class CategoryServlet extends HttpServlet {
 			throw new AppException(e);
 		}
 	}
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res) {
+        
+		    res.setContentType("application/json");
+	        StringBuffer requestJSON = new StringBuffer();
+			String line = null;
+	        try {
+	        	BufferedReader reader = req.getReader();
+			    while ((line = reader.readLine()) != null)
+			    	requestJSON.append(line);
+				Category category = JsonUtil.fromJSON(requestJSON.toString(), Category.class);	
+				categoryservice.addCategory(category);
+			} catch (Exception e) {
+				throw new AppException(e);
+			}
+    }
+	
 
 }

@@ -8,4 +8,7 @@ public interface CategoryService {
 	
 	/* To get list of categories available in database */
 	ArrayList<Category> getListOfCategories();
+	
+	/* To add new category */
+	Category addCategory(Category category);
 }

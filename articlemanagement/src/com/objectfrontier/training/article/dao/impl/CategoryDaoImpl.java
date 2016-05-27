@@ -1,5 +1,6 @@
 package com.objectfrontier.training.article.dao.impl;
 
+import static com.objectfrontier.training.article.util.DBQueries.ADD_CATEGORY_QUERY;
 import static com.objectfrontier.training.article.util.DBQueries.LIST_OF_CATAGORIES_QUERY;
 
 import java.sql.Connection;
@@ -27,5 +28,18 @@ public class CategoryDaoImpl implements CategoryDao {
         	categoryList.add(category); 
         	}	
         return categoryList;
-    } 
+    }
+	
+	@Override
+	public long addCategory(Category category) throws Exception {
+		
+		Connection connection = DataBaseUtil.getDbConnect();
+		PreparedStatement ps = connection.prepareStatement(ADD_CATEGORY_QUERY, java.sql.Statement.RETURN_GENERATED_KEYS);
+		ps.setString(1, category.getCategoryName());
+		ps.executeUpdate();
+		ResultSet rs = ps.getGeneratedKeys();
+		rs.next();
+		return rs.getLong(1);
+	 }
+
 }
