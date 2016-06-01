@@ -22,7 +22,12 @@
 
 #addcategory {
     float:right;
-    padding:5px;
+    padding:2px;
+}
+
+#uploadnewarticle {
+    float:right;
+    padding:2px;
 }
 
 #articleList ul {

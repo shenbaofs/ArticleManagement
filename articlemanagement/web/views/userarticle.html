@@ -2,9 +2,10 @@
 <html>
 <head>
      <link rel="stylesheet" href="/articlemanagement/styles/article.css">
-     <script src="/articlemanagement/scripts/article.js"></script>  
+     <script src="/articlemanagement/scripts/article.js"></script>
+     <script src="/articlemanagement/scripts/category.js"></script>    
 </head>
-<body onload="getlistofarticles()">
+<body onload= "getlistofcategory('true');">
     <div id="header">
         <h1>ARTICLES</h1>
     </div>
@@ -14,18 +15,13 @@
         </div>
         
         <div id="section">
-            <select id="mySelect" onchange="getlistofarticles()">
-                <option value="ALL">ALL</option>
-                <option value="AngularJs">AngularJs</option>
-                <option value="BUSINESS">BUSINESS</option>
-                <option value="SOCIALMEDIA">SOCIALMEDIA</option>
-                <option value="WORKWORLD">WORKWORLD</option>
-            </select>
+            <div id="categories"> </div>
+           
+            <div id="uploadnewarticle">
+            <a href="newarticle.html">UPLOAD NEW ARTICLE</a>
+            </div>
             
-            <a href="newarticle.html" id="uploadnewarticle">UPLOAD NEW ARTICLE</a>
-         
-        <div id="articleList"></div>
-    </div>
-   
+            <div id="articleList"></div>
+      </div>
 </body>
 </html>

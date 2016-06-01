@@ -3,14 +3,8 @@ var articleList = [];
 var category  = "";
 
 function getlistofarticles()  {
-        category = document.getElementById("mySelect").value;
+        category = document.getElementById("selectcategory").value;
         getArticlesService(category);
-         var opt = document.createElement("option");
-        
-        // Add an Option object to Drop Down/List Box
-       document.getElementById("mySelect").options.add(opt);
-        // Assign text and value to Option object
-        opt.text = getCookie("newcategory");
 }
 
 function approve(arr) {

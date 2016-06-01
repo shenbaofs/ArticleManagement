@@ -39,7 +39,7 @@ public class DBQueries {
 		toString();
 	
 	public static String LIST_OF_USERS_QUERY = new StringBuilder().
-	            append("SELECT id, username, password, email_id, phone_no, date_of_birth, status").
+	            append("SELECT  * ").
 	            append("FROM   userdetails ").
 	        toString();
 	

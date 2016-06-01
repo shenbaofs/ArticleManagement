@@ -26,7 +26,7 @@ public class CategoryDaoImpl implements CategoryDao {
         	category.setCategoryId(rs.getLong("Category_Id"));
         	category.setCategoryName(rs.getString("Category_Name"));
         	categoryList.add(category); 
-        	}	
+        }	
         return categoryList;
     }
 	

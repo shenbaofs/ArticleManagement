@@ -11,8 +11,8 @@ public class User {
 	private long    phoneNo;
 	private Date    dateOfBirth;
 	private String  gender;
-	private String role;
-	private String status;
+	private String  role;
+	private String  status;
 	
 	public User() {}
 	

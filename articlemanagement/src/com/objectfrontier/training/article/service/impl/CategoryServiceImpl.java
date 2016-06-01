@@ -30,9 +30,9 @@ public class CategoryServiceImpl implements CategoryService {
 		try {
 			long categoryId = categorydao.addCategory(category);
 			category.setCategoryId(categoryId);
+			return category;
 		} catch(Exception e) {
 			throw new AppException(e);
 		}
-		return category;
 	}
-}
+}	
